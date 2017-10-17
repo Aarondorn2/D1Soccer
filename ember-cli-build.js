@@ -6,11 +6,7 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
     // Add options here
-    lessOptions: {
-      paths: [
-        'bower_components/bootstrap/less'
-      ]
-    }
+
   });
 
   // Use `app.import` to add additional libraries to the generated
@@ -26,7 +22,6 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  app.import('bower_components/bootstrap/dist/js/bootstrap.js');
 
   return app.toTree();
 };

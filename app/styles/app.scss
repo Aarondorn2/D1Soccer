@@ -1,0 +1,14 @@
+@import "bootstrap";
+@import 'd1site';
+@import 'ember-cli-font-awesome-sass';
+
+body {
+  background-color: transparent; //clear styling from other CSS files
+}
+html {
+  background: url('http://www.xsjjys.com/data/out/293/WHDQ-514250955.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
