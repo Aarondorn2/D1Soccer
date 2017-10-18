@@ -315,7 +315,7 @@ ul.social-icons > li
 {
     position: relative;
     z-index: 1000;
-    background: url(https://d1e3dggz9c94t5.cloudfront.net/d1/theme/bg-header.png) repeat-x;
+    background: url('/assets/images/bg-header.png') repeat-x;
 }
 
 /* top header bar */
@@ -443,7 +443,7 @@ ul.social-icons > li
 {
     color: #999999;
     padding: 20px 0 20px 0;
-    background: url(/d1/theme/bg-copyright.jpg) no-repeat center top;
+    background: url('/assets/images/bg-copyright.jpg') no-repeat center top;
 }
 
 /* Main Navigation
