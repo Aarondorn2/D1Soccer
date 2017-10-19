@@ -12,7 +12,16 @@ html {
   -o-background-size: cover;
   background-size: cover;
 }
+.content-container {
+  background: url('/assets/images/bg-maincontent.jpg') no-repeat center center fixed;
+  min-height: 75vh;
+  height:100%;
+}
 .subheader {
     text-align: center;
     margin-top: 8%;
+}
+
+.panel-container {
+  padding: 10px 10px 10px 10px;
 }

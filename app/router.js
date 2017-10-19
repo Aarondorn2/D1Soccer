@@ -6,6 +6,13 @@ const Router = EmberRouter.extend({
   rootURL: config.rootURL
 });
 
-Router.map(function() {});
+Router.map(function() {
+  this.route('secure', function() {
+    this.route('admin', function() {
+      this.route('announcement');
+      this.route('event');
+    });
+  });
+});
 
 export default Router;

@@ -41,7 +41,7 @@
 
                   <li class="dropdown" >
                   		<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-												League <span class="caret"></span>
+												<del>League <span class="caret"></span></del>
 		                  </a>
 						          <ul class="dropdown-menu">
 						              <li class="">
@@ -63,20 +63,31 @@
                   </li>
 
                   <li class="">
-                  		<a class="nav-link" href="#" target="_top">Photos</a>
+                  		<a class="nav-link" href="#" target="_top"><del>Photos</del></a>
                   </li>
                   <li class="">
-                  		<a class="nav-link" href="#" target="_top">Contact</a>
+                  		<a class="nav-link" href="#" target="_top"><del>Contact</del></a>
                   </li>
 
                 </ul> {{!-- <ul class="nav navbar-nav"> --}}
 
 				        <ul class="nav navbar-nav navbar-right">
 										<li class="" style="">
-												<a href="#" target="_top">Join</a>
+												<a href="#" target="_top"><del>Join</del></a>
 										</li>
 										<li class="" style="">
-												<a href="#" target="_top">Log In</a>
+												<a href="#" target="_top"><del>Log In</del></a>
+										</li>
+
+	                  <li class="dropdown" >
+	                  		<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+													ADMIN <span class="caret"></span>
+			                  </a>
+							          <ul class="dropdown-menu">
+														 {{#link-to 'secure.admin.announcement' tagName="li"}}
+																<a href="#" class="nav-link" target="_top">Announcements</a>
+														{{/link-to}}
+												</ul>
 										</li>
 				        </ul>
             </div>
