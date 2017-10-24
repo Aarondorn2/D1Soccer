@@ -41,23 +41,23 @@
 
                   <li class="dropdown" >
                   		<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-												<del>League <span class="caret"></span></del>
+												League <span class="caret"></span>
 		                  </a>
 						          <ul class="dropdown-menu">
-						              <li class="">
+													{{#link-to 'league.information' tagName="li"}}
 						                <a class="nav-link" href="#" target="_top">Information</a>
+						              {{/link-to}}
+
+						              <li class="">
+						                <del><a class="nav-link" href="#" target="_top">News</a></del>
 						              </li>
 
 						              <li class="">
-						                <a class="nav-link" href="#" target="_top">News</a>
+						                <del><a class="nav-link" href="#" target="_top">Schedule</a></del>
 						              </li>
 
 						              <li class="">
-						                <a class="nav-link" href="#" target="_top">Schedule</a>
-						              </li>
-
-						              <li class="">
-						                <a class="nav-link" href="#" target="_top">Standings</a>
+						                <del><a class="nav-link" href="#" target="_top">Standings</a></del>
 						              </li>
 		                	</ul>
                   </li>

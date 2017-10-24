@@ -13,6 +13,10 @@ Router.map(function() {
       this.route('event');
     });
   });
+
+  this.route('league', function() {
+    this.route('information');
+  });
 });
 
 export default Router;

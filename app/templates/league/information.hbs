@@ -1,0 +1,72 @@
+
+<div class="content-container">
+  <div class="clearfix" />
+    <br /><br />
+
+    <div class="row" data-spy="scroll" data-target=".section-nav" data-offset="50">
+
+      {{!-- nav  --}}
+      <div class="col-md-3">
+        <div class="fixed section-nav" data-spy="affix" data-offset-top="2">
+          <ul class="nav nav-stacked fixed" id="sidebar">
+            <li>
+                <a href="#gen-rules">General Rules</a>
+                <a href="#guidelines">Guidelines and Policies</a>
+                  <ul class="nav nav-stacked">
+                      <li><a href="#guidelines-waiver">Injury Waiver / Picture ID / Release Form</a></li>
+                      <li><a href="#guidelines-registration">League Registration & Fees</a></li>
+                      <li><a href="#guidelines-equipment">Equipment</a></li>
+                      <li><a href="#guidelines-sportsmanship">Sportsmanship</a></li>
+                      <li><a href="#guidelines-referee">Referee Staff</a></li>
+                  </ul>
+                <a href="#league-player">League and Player Information</a>
+                  <ul class="nav nav-stacked">
+                      <li><a href="#league-player-responsibility">Captain/Player Responsibility</a></li>
+                      <li><a href="#league-player-rosters">Player Rosters</a></li>
+                      <li><a href="#league-player-participation">Individual Player Divisional Participation</a></li>
+                      <li><a href="#league-player-red-card">Red Card Policy</a></li>
+                      <li><a href="#league-player-yellow-card">Yellow Card Policy</a></li>
+                      <li><a href="#league-player-fighting">Fighting: "Zero Tolerance Policy"</a></li>
+                      <li><a href="#league-player-standings">League Standings</a></li>
+                      <li><a href="#league-player-schedule">Game Schedule & Make-Up Games</a></li>
+                      <li><a href="#league-player-termination">Termination of Participation</a></li>
+                      <li><a href="#league-player-protest">Protest</a></li>
+                      <li><a href="#league-player-first-aid">First Aid</a></li>
+                  </ul>
+                <a href="#game-rules">Rules of the Game</a>
+                  <ul class="nav nav-stacked">
+                      <li><a href="#game-rules-field">The Field of Play</a></li>
+                      <li><a href="#game-rules-ball">The Ball</a></li>
+                      <li><a href="#game-rules-number-players">Number of Players</a></li>
+                      <li><a href="#game-rules-equipment">Player Equipment</a></li>
+                      <li><a href="#game-rules-duration">Duration of Game</a></li>
+                      <li><a href="#game-rules-start">Start of Play</a></li>
+                      <li><a href="#game-rules-goalkeepers">Goalkeepers</a></li>
+                      <li><a href="#game-rules-substitutions">Substitutions</a></li>
+                      <li><a href="#game-rules-out">Out of Bounds</a></li>
+                      <li><a href="#game-rules-fouls">Fouls</a></li>
+                      <li><a href="#game-rules-free-kicks">Free Kicks</a></li>
+                      <li><a href="#game-rules-penalty-kicks">Penalty Kicks (Shootout)</a></li>
+                  </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      {{!-- /nav --}}
+
+
+      {{!-- information  --}}
+      <div class="col-md-9">
+          {{league/information/content-facility}}
+          <br />
+          {{league/information/content-guidelines}}
+          <br />
+          {{league/information/content-league-player}}
+          <br />
+          {{league/information/content-game-rules}}
+          <br /><br />
+      </div>
+      {{!-- /information --}}
+
+    </div>
+</div>
