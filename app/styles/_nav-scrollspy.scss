@@ -1,0 +1,80 @@
+
+//media query
+
+@media (max-width:$screen-md) {
+    .affix {
+        position: static;
+    }
+}
+
+.section-nav {
+    padding-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.section-nav .nav>li>a {
+    padding: 4px 20px;
+    font-size: 13px;
+    font-weight: 400;
+}
+.section-nav .nav .nav>li>a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+}
+
+//affix
+.affix-top { }
+.affix {
+  top: 0;
+  z-index: 1;
+}
+.affix-bottom {
+  position:relative;
+}
+
+
+//nav
+.section-nav .nav>.active>a {
+  color: #333a3b;
+}
+.section-nav .nav .active {
+  font-weight: bold;
+  // background: #72bcd4;
+}
+
+.section-nav .nav .nav {
+  display: none;
+}
+
+.section-nav .nav li:hover .nav {
+  display: block;
+}
+
+.section-nav .nav .active .nav {
+  display: block;
+}
+
+.section-nav .nav .nav a {
+  font-weight: normal;
+  font-size: .85em;
+}
+
+.section-nav .nav .nav span {
+  margin: 0 5px 0 2px;
+}
+
+.section-nav .nav .nav .active a,
+.section-nav .nav .nav .active:hover a,
+.section-nav .nav .nav .active:focus a {
+  font-weight: bold;
+  padding-left: 30px;
+  border-left: 5px solid #333a3b;
+}
+
+.section-nav .nav .nav .active span,
+.section-nav .nav .nav .active:hover span,
+.section-nav .nav .nav .active:focus span {
+  display: none;
+}

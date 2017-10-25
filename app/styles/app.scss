@@ -1,6 +1,7 @@
-@import "bootstrap";
-@import 'd1site';
+@import "bootstrap-custom";
 @import 'ember-cli-font-awesome-sass';
+@import 'd1site';
+@import 'nav-scrollspy';
 
 body {
   background-color: transparent; //clear styling from other CSS files
@@ -14,7 +15,7 @@ html {
 }
 .content-container {
   background: url('/assets/images/bg-maincontent.jpg') no-repeat center center fixed;
-  min-height: 75vh;
+  min-height: 80vh;
   height:100%;
 }
 .subheader {
@@ -26,30 +27,8 @@ html {
   padding: 10px 10px 10px 10px;
 }
 
-
-
 //section styling
-.section-nav {
-    padding-left: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-.section-nav .nav>li>a {
-    color: #999;
-    padding: 4px 20px;
-    font-size: 13px;
-    font-weight: 400;
-}
-.section-nav .nav .nav>li>a {
-    padding-top: 1px;
-    padding-bottom: 1px;
-    padding-left: 30px;
-    font-size: 12px;
-}
 .section-subgroup {
   padding-top: 10px;
   padding-left: 20px;
-}
-.section-nav .nav>.active>a {
-  color: #563d7c;
 }

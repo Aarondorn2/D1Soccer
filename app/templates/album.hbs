@@ -1,0 +1,12 @@
+
+<div class="content-container">
+  <div class="clearfix" />
+  <br /><br />
+
+  <div class="row">
+    {{#each model.data as |image|}}
+      {{image-thumbnail image=image}}
+    {{/each}}
+  </div>
+
+</div>

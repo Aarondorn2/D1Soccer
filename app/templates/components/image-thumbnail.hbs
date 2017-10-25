@@ -1,0 +1,17 @@
+
+<div class="col-md-4">
+  <div class="thumbnail">
+
+      {{light-box href=image.link
+            data-lightbox=(if image.title image.title image.id)
+            data-title=image.title}}
+
+      <div class="caption">
+        <h3>{{image.title}}</h3>
+        {{#if image.description}}
+          <p>{{image.description}}</p>
+        {{/if}}
+      </div>
+
+  </div>
+</div>

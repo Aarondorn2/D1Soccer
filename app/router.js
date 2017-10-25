@@ -17,6 +17,7 @@ Router.map(function() {
   this.route('league', function() {
     this.route('information');
   });
+  this.route('album');
 });
 
 export default Router;
