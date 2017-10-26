@@ -4,20 +4,28 @@
 @import 'nav-scrollspy';
 @import 'contact-card';
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 body {
   background-color: transparent; //clear styling from other CSS files
 }
-html {
+.main-bg {
   background: url('/assets/images/bg-soccer.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
-.content-container {
+.page-bg {
   background: url('/assets/images/bg-maincontent.jpg') no-repeat center center fixed;
-  min-height: 80vh;
-  height:100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.content-container {
 }
 .jumbotron {
   text-align: center;
@@ -27,12 +35,7 @@ html {
     margin-top: 8%;
 }
 
-.panel-container {
-  padding: 10px 10px 10px 10px;
-}
-
-//section styling
-.section-subgroup {
-  padding-top: 10px;
-  padding-left: 20px;
+.ember-cli-g-map {
+  height: 400px;
+  margin: 0px 20px 20px 20px;
 }
