@@ -26,6 +26,7 @@ body {
   background-size: cover;
 }
 .content-container {
+  padding: 40px 30px 30px 30px;
 }
 .jumbotron {
   text-align: center;
@@ -37,5 +38,14 @@ body {
 
 .ember-cli-g-map {
   height: 400px;
-  margin: 0px 20px 20px 20px;
+}
+
+//twtitter timeline on news page
+.timeline-Header {
+  text-align: center;
+  background: url('/assets/images/bg-red-locations.jpg');
+}
+.timeline-Header h1 {
+  color: #ffffff;
+  text-shadow: none;
 }

@@ -16,6 +16,7 @@ Router.map(function() {
 
   this.route('league', function() {
     this.route('information');
+    this.route('news');
   });
   this.route('album');
   this.route('contact');
