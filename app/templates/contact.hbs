@@ -1,0 +1,36 @@
+{{#content-container}}
+
+<div class="row">
+  <div class="col-md-5">
+    <div class="row">
+      {{!-- D1 --}}
+      {{contact-card
+        title="D1 Chattanooga"
+        subtitle="D1 Sunday Adult Soccer League is a program of D1 Chattanooga"
+        phone="(423) 499-9818"
+        email=""
+        addr="7430 Commons Blvd, Chattanooga, TN 37421"
+        website="https://www.d1sportstraining.com/chattanooga/"
+      }}
+      {{!-- Director --}}
+      {{contact-card
+        title="League Director"
+        person="Chris Carpenter"
+        phone="(423) 580-1893"
+        email="2CoachChris@gmail.com"
+      }}
+      {{!-- Assistant Director --}}
+      {{contact-card
+        title="Assistant Director"
+        person="Aaron Heidorn"
+        phone="(423) 693-8412"
+        email="AaronJHeidorn@gmail.com"
+      }}
+    </div>
+  </div>
+  <div class="col-md-7">
+    {{g-maps name="my-map" lat=lat lng=lng zoom=zoom}}
+  </div>
+</div>
+
+{{/content-container}}

@@ -16,13 +16,18 @@ module.exports = function(environment) {
       messagingSenderId: '650769926530'
     },
 
-    // // if using ember-cli-content-security-policy
-    // contentSecurityPolicy: {
-    //   'script-src': "'self' 'unsafe-eval' apis.google.com",
-    //   'frame-src': "'self' https://*.firebaseapp.com",
-    //   'connect-src': "'self' wss://*.firebaseio.com https://*.googleapis.com"
-    // },
+    googleMap: {
+      apiKey: 'AIzaSyAA7J1woMp5Kn6ZMvg0fyJVIjq42v-0fTI'
+    },
 
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'script-src': "'self' 'unsafe-eval' *.googleapis.com maps.gstatic.com",
+      'font-src': "'self' fonts.gstatic.com",
+      'connect-src': "'self' maps.gstatic.com",
+      'img-src': "'self' *.googleapis.com maps.gstatic.com csi.gstatic.com",
+      'style-src': "'self' 'unsafe-inline' fonts.googleapis.com maps.gstatic.com"
+    },
 
     EmberENV: {
       FEATURES: {

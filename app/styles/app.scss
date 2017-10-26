@@ -2,6 +2,7 @@
 @import 'ember-cli-font-awesome-sass';
 @import 'd1site';
 @import 'nav-scrollspy';
+@import 'contact-card';
 
 body {
   background-color: transparent; //clear styling from other CSS files
@@ -17,6 +18,9 @@ html {
   background: url('/assets/images/bg-maincontent.jpg') no-repeat center center fixed;
   min-height: 80vh;
   height:100%;
+}
+.jumbotron {
+  text-align: center;
 }
 .subheader {
     text-align: center;

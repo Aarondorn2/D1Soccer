@@ -18,6 +18,7 @@ Router.map(function() {
     this.route('information');
   });
   this.route('album');
+  this.route('contact');
 });
 
 export default Router;

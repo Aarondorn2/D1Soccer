@@ -1,12 +1,14 @@
 
-<div class="content-container">
-  <div class="clearfix" />
-  <br /><br />
+{{#content-container}}
 
-  <div class="row">
-    {{#each model.data as |image|}}
-      {{image-thumbnail image=image}}
-    {{/each}}
-  </div>
+  <div class="row" style = "padding: 20px 40px 20px 40px">
+     {{#each groupedImages as |row|}}
+        <div class="row">
+          {{#each row as |image|}}
+            {{image-thumbnail image=image}}
+          {{/each}}
+        </div>
+      {{/each}}
+   </div>
 
-</div>
+{{/content-container}}

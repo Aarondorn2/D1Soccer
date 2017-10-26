@@ -5,7 +5,6 @@ export default Route.extend({
     imgur: Ember.inject.service(),
 
     model() {
-      let album = this.get('imgur').getAlbum();
-      return album;
+      return this.get('imgur').getAlbum();
     }
 });
