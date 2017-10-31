@@ -1,6 +1,7 @@
 {
   "name": "d1soccer",
   "dependencies": {
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "ember-simple-auth": "0.8.0"
   }
 }

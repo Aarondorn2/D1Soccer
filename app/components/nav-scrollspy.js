@@ -5,13 +5,13 @@ export default Ember.Component.extend({
 
   // add scrollspy
   _addScrollSpy: Ember.on('didInsertElement', function() {
-    $('body').scrollspy({
+    Ember.$('body').scrollspy({
         target: '.section-nav'
     });
-    $('#sidebar').affix({
+    Ember.$('#sidebar').affix({
     offset: {
-        top: $('#sidebar').offset().top,
-        bottom: ($('.footer').outerHeight(true) + 40)
+        top: Ember.$('#sidebar').offset().top,
+        bottom: (Ember.$('.footer').outerHeight(true) + 40)
     }
     });
   })
