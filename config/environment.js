@@ -16,6 +16,10 @@ module.exports = function(environment) {
       messagingSenderId: '650769926530'
     },
 
+    torii: {
+      sessionServiceName: 'session'
+    },
+
     googleMap: {
       apiKey: 'AIzaSyAA7J1woMp5Kn6ZMvg0fyJVIjq42v-0fTI'
     },

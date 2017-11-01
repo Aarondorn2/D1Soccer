@@ -1,0 +1,48 @@
+{{yield}}
+<div id="login-modal" class="modal fade" role="dialog">
+  <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" id="login-modal-dismiss" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Login <small>select a login method</small></h4>
+        </div>
+        <div class="modal-body login-modal-body">
+          <div class="login-modal-icons">
+            <a {{action "signIn" "facebook"}} class="btn login-modal-icon" title="Sign in with Facebook"><span class="fa fa-facebook" /></a>
+            <a {{action "signIn" "twitter"}} class="btn login-modal-icon" title="Sign in with Twitter"><span class="fa fa-twitter" /></a>
+            <a {{action "signIn" "github"}} class="btn login-modal-icon" title="Sign in with Google"><span class="fa fa-google" /></a>
+            <a {{action "showEmail"}} class="btn login-modal-icon" title="Sign in with an Email and Password"><span class="fa fa-envelope" /></a>
+          </div>
+
+          <hr />
+
+          <div id="login-email" class="login-email hide">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              {{input type="text" value=email placeholder="Email" class="form-control"}}
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+              {{input type="password" value=password placeholder="Password" class="form-control"}}
+            </div>
+
+            <br>
+
+            {{#link-to 'register'}}
+              <a class="btn login-btn pull-left" ><button class="btn" data-dismiss="modal">Register</button></a>
+            {{/link-to}}
+            <a {{action "signIn" "password"}} class="btn login-btn pull-right" ><button class="btn">Login</button></a>
+            <div class="clearfix" />
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

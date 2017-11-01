@@ -1,6 +1,11 @@
 <div class="home-container">
   {{#main-header}}{{/main-header}}
 
+  {{#if session.isAuthenticated}}
+  {{else}}
+    {{login-modal}}
+  {{/if}}
+
   {{outlet}}
 
 

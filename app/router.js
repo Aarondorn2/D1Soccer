@@ -7,19 +7,14 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('secure', function() {
-    this.route('admin', function() {
-      this.route('announcement');
-      this.route('event');
-    });
-  });
-
   this.route('league', function() {
     this.route('information');
     this.route('news');
   });
   this.route('album');
   this.route('contact');
+  this.route('login');
+  this.route('register');
 });
 
 export default Router;

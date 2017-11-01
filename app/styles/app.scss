@@ -3,6 +3,7 @@
 @import 'd1site';
 @import 'nav-scrollspy';
 @import 'contact-card';
+@import 'login-modal';
 
 html, body {
     max-width: 100%;
@@ -48,4 +49,19 @@ body {
 .timeline-Header h1 {
   color: #ffffff;
   text-shadow: none;
+}
+
+.hide {
+  display:none;
+}
+
+.show {
+  display: block;
+}
+
+.emptyPage {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
