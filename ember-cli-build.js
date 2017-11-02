@@ -8,6 +8,9 @@ module.exports = function(defaults) {
     // Add options here
   'ember-font-awesome': {
     useScss: true
+  },
+  'ember-cli-bootstrap-sassy': {
+    'glyphicons': false
   }
 
   });

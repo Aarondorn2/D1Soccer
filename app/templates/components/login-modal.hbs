@@ -11,21 +11,21 @@
         </div>
         <div class="modal-body login-modal-body">
           <div class="login-modal-icons">
-            <a {{action "signIn" "facebook"}} class="btn login-modal-icon" title="Sign in with Facebook"><span class="fa fa-facebook" /></a>
-            <a {{action "signIn" "twitter"}} class="btn login-modal-icon" title="Sign in with Twitter"><span class="fa fa-twitter" /></a>
-            <a {{action "signIn" "github"}} class="btn login-modal-icon" title="Sign in with Google"><span class="fa fa-google" /></a>
-            <a {{action "showEmail"}} class="btn login-modal-icon" title="Sign in with an Email and Password"><span class="fa fa-envelope" /></a>
+            <a {{action "signIn" "facebook"}} class="btn login-modal-icon" title="Sign in with Facebook">{{fa-icon "facebook"}}</a>
+            <a {{action "signIn" "twitter"}} class="btn login-modal-icon" title="Sign in with Twitter">{{fa-icon "twitter"}}</a>
+            <a {{action "signIn" "github"}} class="btn login-modal-icon" title="Sign in with Google">{{fa-icon "google"}}</a>
+            <a {{action "showEmail"}} class="btn login-modal-icon" title="Sign in with an Email and Password">{{fa-icon "envelope"}}</a>
           </div>
 
           <hr />
 
           <div id="login-email" class="login-email hide">
             <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <span class="input-group-addon">{{fa-icon "user" fixedWidth=true}}</span>
               {{input type="text" value=email placeholder="Email" class="form-control"}}
             </div>
             <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+              <span class="input-group-addon">{{fa-icon "lock" fixedWidth=true}}</span>
               {{input type="password" value=password placeholder="Password" class="form-control"}}
             </div>
 
