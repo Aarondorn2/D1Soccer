@@ -1,5 +1,5 @@
 <div class="home-container">
-  {{#main-header}}{{/main-header}}
+  {{#main-header session=session}}{{/main-header}}
 
   {{#if session.isAuthenticated}}
   {{else}}

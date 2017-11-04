@@ -1,3 +1,8 @@
 {{#content-container}}
-  {{login-page}}
+
+    {{#if session.isAuthenticated}}
+      wat
+    {{else}}
+      {{login-page}}
+    {{/if}}
 {{/content-container}}

@@ -6,6 +6,9 @@ export default Ember.Component.extend({
 
     showSignin: function() {
       Ember.$('#login-modal').modal('show');
+    },
+    logout: function() {
+      this.get("session").close();
     }
   }
 });

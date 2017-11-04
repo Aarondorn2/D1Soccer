@@ -73,6 +73,10 @@
 
 				        <ul class="nav navbar-nav navbar-right">
 										{{#if session.isAuthenticated}}
+
+											<li class="" style="">
+												<a {{action "logout"}} href="#" target="_top">Log Out</a>
+											</li>
 										{{else}}
 											<li class="" style="">
 												<a {{action "showSignin"}} href="#" target="_top">Log In / Join</a>
