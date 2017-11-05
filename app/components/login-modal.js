@@ -22,6 +22,16 @@ export default Ember.Component.extend({
           this.set('errorMessage', 'Please provide an email and password.');
           return;
         }
+      } else if (provider === "google") {
+        //set scopes
+        providerData.settings = {
+          scope: 'https://www.googleapis.com/auth/userinfo.email'
+        };
+      } else if (provider === "facebook") {
+        //set scopes
+        providerData.settings = {
+          scope: 'email'
+        };
       }
 
       this.get('session').open('firebase', providerData).then(

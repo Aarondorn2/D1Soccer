@@ -1,8 +1,22 @@
 {{#content-container}}
 
 <div class="row">
+  <div class="col-md-12">
+    {{g-maps name="my-map" lat=lat lng=lng zoom=zoom markers=markers}}
+  </div>
+</div>
+<br  />
+<div class="row">
   <div class="col-md-4">
-    <div class="row">
+      {{!-- Director --}}
+      {{contact-card
+        title="League Director"
+        person="Chris Carpenter"
+        phone="(423) 580-1893"
+        email="2CoachChris@gmail.com"
+      }}
+  </div>
+  <div class="col-md-4">
       {{!-- D1 --}}
       {{contact-card
         title="D1 Chattanooga"
@@ -12,13 +26,8 @@
         addr="7430 Commons Blvd, Chattanooga, TN 37421"
         website="https://www.d1sportstraining.com/chattanooga/"
       }}
-      {{!-- Director --}}
-      {{contact-card
-        title="League Director"
-        person="Chris Carpenter"
-        phone="(423) 580-1893"
-        email="2CoachChris@gmail.com"
-      }}
+  </div>
+  <div class="col-md-4">
       {{!-- Assistant Director --}}
       {{contact-card
         title="Assistant Director"
@@ -26,11 +35,8 @@
         phone="(423) 693-8412"
         email="AaronJHeidorn@gmail.com"
       }}
-    </div>
-  </div>
-  <div class="col-md-8">
-    {{g-maps name="my-map" lat=lat lng=lng zoom=zoom markers=markers}}
   </div>
 </div>
+
 
 {{/content-container}}

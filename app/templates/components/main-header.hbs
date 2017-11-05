@@ -70,8 +70,13 @@
                   {{/link-to}}
 
                 </ul> {{!-- <ul class="nav navbar-nav"> --}}
+				        <ul class="nav navbar-nav navbar-right" style="margin-left: 95px;">
+										{{#if session.isAuthenticated}}
+											{{#link-to 'secure.dashboard' tagName="li"}}
+													<a class="nav-link" href="/secure/dashboard" target="_top">Dashboard</a>
+											{{/link-to}}
+										{{/if}}
 
-				        <ul class="nav navbar-nav navbar-right">
 										{{login-button session=session}}
 				        </ul>
             </div>

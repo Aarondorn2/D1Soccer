@@ -1,0 +1,36 @@
+<div class="panel panel-default panel-registration">
+  <div class="panel-heading">
+    Registration
+  </div>
+  <div class="panel-body">
+    {{#if reasonNoUser}}
+      <div>
+        <p class="label label-info">
+           It looks like you haven't created a full account with us yet.  Please fill out this information:
+        </p>
+      </div>
+    {{/if}}
+    <div class="row">
+      <div class="col-md-8">
+        {{input type="text" value=firstName placeholder="First Name"}}<br>
+        {{input type="text" value=lastName placeholder="Last Name"}}<br>
+        {{input type="text" value=email placeholder="Email" disabled=isEmailProvided}}<br>
+        {{input type="password" value=password placeholder="Password"}}<br>
+        <button {{action "signUp"}}> Sign Up </button>
+      </div>
+      <div class="col-md-4">
+        {{#validation-tip isValid=isValidEmail}}Must be a valid email{{/validation-tip}}
+
+        {{#validation-tip isValid=isValidPassword}}Must be a valid password{{/validation-tip}}
+        <ul>
+
+            {{#validation-tip isValid=isValidPasswordLength tagName='li'}}Must be more than 6 characters{{/validation-tip}}
+            {{#validation-tip isValid=isValidPasswordAlphaNumeric tagName='li'}}Must have a number{{/validation-tip}}
+            {{#validation-tip isValid=isValidPasswordCasing tagName='li'}}Must have lowercase and uppercase{{/validation-tip}}
+
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>

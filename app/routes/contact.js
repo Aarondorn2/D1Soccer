@@ -4,8 +4,10 @@ export default Route.extend({
 
   setupController: function(controller) {
     controller.setProperties({
-      lat: 35.035266,
-      lng: -85.149367,
+      lat: 35.03489461, // Required
+      lng: -85.14845471, // Required
+      // lat: 35.035266,
+      // lng: -85.149367,
       zoom: 17,
       mapType: 'satellite', // Accepts 'roadmap', 'satellite', 'hybrid', or 'terrain'
       showMapTypeControl: true,

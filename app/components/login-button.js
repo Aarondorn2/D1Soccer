@@ -11,7 +11,7 @@ export default Ember.Component.extend({
       },
       logout: function() {
         this.get("session").close();
-        this.get('routing').transitionTo('index');
+        this.get('routing').transitionTo('application');
       }
     }
 });

@@ -1,4 +1,13 @@
-import Route from '@ember/routing/route';
+import Ember from 'ember';
 
-export default Route.extend({
+export default Ember.Route.extend({
+
+    model() {
+      return this.store.query('user', { filter: { email: "aarondorn2@gmail.com" } });
+    },
+  afterModel(model) {
+    if (model.get('length') === 0) {
+      this.transitionTo('register', { queryParams: { reason: 'noUser' }});
+    }
+  }
 });
