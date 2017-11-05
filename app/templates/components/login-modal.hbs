@@ -20,21 +20,34 @@
           <hr />
 
           <div id="login-email" class="login-email hide">
+
             <div class="input-group">
               <span class="input-group-addon">{{fa-icon "user" fixedWidth=true}}</span>
-              {{input type="text" value=email placeholder="Email" class="form-control"}}
+              {{input type="text" value=email placeholder="Email" class="form-control" insert-newline="submitLogin"}}
             </div>
             <div class="input-group">
               <span class="input-group-addon">{{fa-icon "lock" fixedWidth=true}}</span>
-              {{input type="password" value=password placeholder="Password" class="form-control"}}
+              {{input type="password" value=password placeholder="Password" class="form-control" insert-newline="submitLogin"}}
             </div>
 
             <br>
+            {{#if errorMessage}}
+              <div class="login-error">
+                {{errorMessage}}
+              </div>
+              <br />
+            {{/if}}
+            {{#if session.isWorking}}
+              <div class="login-spinner">
+                {{fa-icon "spinner" spin=true size=4}}
+              </div>
+              <div class="clearfix" />
+            {{/if}}
 
             {{#link-to 'register'}}
               <a class="btn login-btn pull-left" ><button class="btn" data-dismiss="modal">Register</button></a>
             {{/link-to}}
-            <a {{action "signIn" "password"}} class="btn login-btn pull-right" ><button class="btn">Login</button></a>
+            <a {{action "signIn" "password"}} class="btn login-btn pull-right" ><button class="btn" id="login-button">Login</button></a>
             <div class="clearfix" />
 
           </div>

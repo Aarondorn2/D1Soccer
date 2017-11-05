@@ -1,9 +1,9 @@
 <div class="home-container">
-  {{#main-header session=session}}{{/main-header}}
+  {{#main-header session=session router=router}}{{/main-header}}
 
   {{#if session.isAuthenticated}}
   {{else}}
-    {{login-modal}}
+    {{login-modal}} {{!-- needs to be on main template --}}
   {{/if}}
 
   {{outlet}}

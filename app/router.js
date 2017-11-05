@@ -15,6 +15,16 @@ Router.map(function() {
   this.route('contact');
   this.route('login');
   this.route('register');
+  this.authenticatedRoute('secure', function() {
+    this.route('admin', function() {
+      this.route('announcement');
+      this.route('event');
+    });
+  });
+
+  this.route('secure', function() {
+    this.route('dashboard');
+  });
 });
 
 export default Router;

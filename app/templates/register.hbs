@@ -1,1 +1,11 @@
 {{outlet}}
+{{#validation-tip isValid=isValidEmail}}Must be a valid email{{/validation-tip}}
+
+{{#validation-tip isValid=isValidPassword}}Must be a valid password{{/validation-tip}}
+<ul>
+
+    {{#validation-tip isValid=isValidPasswordLength tagName='li'}}Must be more than 6 characters{{/validation-tip}}
+    {{#validation-tip isValid=isValidPasswordAlphaNumeric tagName='li'}}Must have a number{{/validation-tip}}
+    {{#validation-tip isValid=isValidPasswordCasing tagName='li'}}Must have lowercase and uppercase{{/validation-tip}}
+
+</ul>

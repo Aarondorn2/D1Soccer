@@ -72,27 +72,7 @@
                 </ul> {{!-- <ul class="nav navbar-nav"> --}}
 
 				        <ul class="nav navbar-nav navbar-right">
-										{{#if session.isAuthenticated}}
-
-											<li class="" style="">
-												<a {{action "logout"}} href="#" target="_top">Log Out</a>
-											</li>
-										{{else}}
-											<li class="" style="">
-												<a {{action "showSignin"}} href="#" target="_top">Log In / Join</a>
-											</li>
-										{{/if}}
-
-	                  {{!-- <li class="dropdown" >
-	                  		<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-													ADMIN <span class="caret"></span>
-			                  </a>
-							          <ul class="dropdown-menu">
-														 {{#link-to 'secure.admin.announcement' tagName="li"}}
-																<a href="#" class="nav-link" target="_top">Announcements</a>
-														{{/link-to}}
-												</ul>
-										</li> --}}
+										{{login-button session=session}}
 				        </ul>
             </div>
 
