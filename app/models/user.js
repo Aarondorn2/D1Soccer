@@ -8,5 +8,6 @@ export default DS.Model.extend({
   phone: DS.attr('string'),
   emergencyContact: DS.attr('string'),
   emergencyContactPhone: DS.attr('string'),
-  userType: DS.attr('string')
+  userType: DS.attr('string'),
+  email: DS.attr('string')
 });

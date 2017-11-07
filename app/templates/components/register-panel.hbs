@@ -1,36 +1,90 @@
 <div class="panel panel-default panel-registration">
   <div class="panel-heading">
-    Registration
+    <h4>Registration</h4>
   </div>
-  <div class="panel-body">
-    {{#if reasonNoUser}}
-      <div>
-        <p class="label label-info">
-           It looks like you haven't created a full account with us yet.  Please fill out this information:
-        </p>
-      </div>
-    {{/if}}
+  <div class="panel-body panel-body-registration">
+
     <div class="row">
-      <div class="col-md-8">
-        {{input type="text" value=firstName placeholder="First Name"}}<br>
-        {{input type="text" value=lastName placeholder="Last Name"}}<br>
-        {{input type="text" value=email placeholder="Email" disabled=isEmailProvided}}<br>
-        {{input type="password" value=password placeholder="Password"}}<br>
-        <button {{action "signUp"}}> Sign Up </button>
-      </div>
-      <div class="col-md-4">
-        {{#validation-tip isValid=isValidEmail}}Must be a valid email{{/validation-tip}}
+      {{#if session.isAuthenticated}}
+        <div class="alert alert-info alert-registration">
+             <p>It looks like this is the first time you've signed in with the email: <b>{{email}}</b>.</p>
+             <p>Please fill in the information below to finish creating an account.</p>
+        </div>
+        <br />
+      {{/if}}
 
-        {{#validation-tip isValid=isValidPassword}}Must be a valid password{{/validation-tip}}
-        <ul>
-
-            {{#validation-tip isValid=isValidPasswordLength tagName='li'}}Must be more than 6 characters{{/validation-tip}}
-            {{#validation-tip isValid=isValidPasswordAlphaNumeric tagName='li'}}Must have a number{{/validation-tip}}
-            {{#validation-tip isValid=isValidPasswordCasing tagName='li'}}Must have lowercase and uppercase{{/validation-tip}}
-
-        </ul>
+      <div class="col-md-12">
+        <div class="row registration-input-row">
+          <div class="col-md-6">
+            {{bootstrap-input type="text" value=firstName label="First Name" tag="input-firstName" required="true"}}
+          </div>
+          <div class="col-md-6">
+            {{bootstrap-input type="text" value=lastName label="Last Name" tag="input-lastName" required="true"}}
+          </div>
+        </div>
+        <div class="row registration-input-row">
+          <div class="col-md-5">
+            {{bootstrap-input type="text" mask="99/99/9999" value=dob label="Date of Birth" tag="input-dob" required="true" maskedValue="true"}}
+          </div>
+          <div class="col-md-5">
+            {{bootstrap-input type="text" mask='(999) 999-9999' value=phone label="Phone Number" tag="input-phone"}}
+          </div>
+          <div class="col-md-2">
+            {{#bootstrap-input type="select" value=shirtSize label="Shirt Size" tag="input-shirtSize"}}
+                <option>None</option>
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
+                <option>XXL</option>
+                <option>XXL</option>
+            {{/bootstrap-input}}
+          </div>
+        </div>
+        <div class="row registration-input-row">
+          <div class="col-md-6">
+            {{bootstrap-input type="text" value=emergencyContact label="Emergency Contact Name" tag="input-emergency-contact" required="true"}}
+          </div>
+          <div class="col-md-6">
+            {{bootstrap-input type="text" mask="(999) 999-9999" value=emergencyContactPhone label="Emergency Contact Phone Number" tag="input-emergency-contact-phone" required="true"}}
+          </div>
+        </div>
       </div>
     </div>
+
+    {{#if session.isAuthenticated}}
+    {{else}}
+    <hr />
+      <div class="row">
+        <div class="col-md-7">
+          {{bootstrap-input type="text" value=email label="Email" tag="input-email" required="true"}}
+          {{bootstrap-input type="password" value=password label="Password" tag="input-password" required="true"}}
+          {{bootstrap-input type="password" value=passwordConfirm label="Password Confirmation" tag="input-password-confirm" required="true"}}
+        </div>
+        <div class="col-md-5">
+          {{#validation-tip isValid=isValidEmail class="validation-tip-registration-email"}}Must be a valid email{{/validation-tip}}
+          {{#validation-tip isValid=isValidPassword class="validation-tip-registration-password"}}Must be a valid password{{/validation-tip}}
+          <ul>
+              {{#validation-tip isValid=isValidPasswordLength tagName='li'}}Must be more than 6 characters{{/validation-tip}}
+              {{#validation-tip isValid=isValidPasswordAlphaNumeric tagName='li'}}Must have a number{{/validation-tip}}
+              {{#validation-tip isValid=isValidPasswordCasing tagName='li'}}Must have lowercase and uppercase{{/validation-tip}}
+              {{#validation-tip isValid=isValidPasswordMatch tagName='li'}}Passwords must match{{/validation-tip}}
+          </ul>
+        </div>
+      </div>
+    {{/if}}
+
+
+  </div>
+  <div class="panel-footer">
+    <div style="">
+      {{#if isValidForm}}
+        <button type="button" class="btn" {{action "signUp"}}> Register </button>
+      {{else}}
+        <button type="button" class="btn" disabled="true" title="Please fill in required (*) information"> Register </button>
+      {{/if}}
+    </div>
+    <div class="clearfix" />
 
   </div>
 </div>

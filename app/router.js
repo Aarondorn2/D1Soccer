@@ -10,6 +10,8 @@ Router.map(function() {
   this.route('league', function() {
     this.route('information');
     this.route('news');
+    this.route('schedule');
+    this.route('standings');
   });
   this.route('album');
   this.route('contact');
@@ -25,6 +27,8 @@ Router.map(function() {
   this.route('secure', function() {
     this.route('dashboard');
   });
+
+  this.route('leage', function() {});
 });
 
 export default Router;

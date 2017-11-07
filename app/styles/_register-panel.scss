@@ -1,0 +1,24 @@
+.panel-registration {
+  max-width: 900px;
+  margin: auto;
+
+}
+
+.registration-input-row {
+  margin-top: 10px;
+}
+
+.alert-registration {
+  text-align: center;
+  width: 90%;
+  margin: auto;
+}
+
+@media screen and (min-width: 990px) {
+  .validation-tip-registration-email {
+      padding-top: 27px;
+  }
+  .validation-tip-registration-password {
+      padding-top: 54px;
+  }
+}

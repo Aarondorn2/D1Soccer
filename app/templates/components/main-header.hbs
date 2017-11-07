@@ -52,13 +52,13 @@
 						                <a class="nav-link" href="#" target="_top">News</a>
 						              {{/link-to}}
 
-						              <li class="">
-						                <del><a class="nav-link" href="#" target="_top">Schedule</a></del>
-						              </li>
+													{{#link-to 'league.schedule' tagName="li"}}
+						                <a class="nav-link" href="#" target="_top">Schedule</a>
+						              {{/link-to}}
 
-						              <li class="">
-						                <del><a class="nav-link" href="#" target="_top">Standings</a></del>
-						              </li>
+													{{#link-to 'league.standings' tagName="li"}}
+						                <a class="nav-link" href="#" target="_top">Standings</a>
+						              {{/link-to}}
 		                	</ul>
                   </li>
 
@@ -70,7 +70,7 @@
                   {{/link-to}}
 
                 </ul> {{!-- <ul class="nav navbar-nav"> --}}
-				        <ul class="nav navbar-nav navbar-right" style="margin-left: 95px;">
+				        <ul class="nav navbar-nav navbar-right" style="margin-left: -15px;">
 										{{#if session.isAuthenticated}}
 											{{#link-to 'secure.dashboard' tagName="li"}}
 													<a class="nav-link" href="/secure/dashboard" target="_top">Dashboard</a>
