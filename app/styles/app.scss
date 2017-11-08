@@ -1,12 +1,12 @@
 @import "bootstrap-custom";
 @import "font-awesome";
 @import 'd1site';
-@import 'nav-scrollspy';
-@import 'contact-card';
-@import 'login-modal';
-@import 'validation-tip';
-@import 'register-panel';
-@import 'bootstrap-input';
+@import 'components/menu/nav-scrollspy';
+@import 'components/contact-card';
+@import 'components/auth/login-modal';
+@import 'components/form/validation-tip';
+@import 'components/auth/register-panel';
+@import 'components/form/bootstrap-input';
 
 html, body {
     max-width: 100%;
