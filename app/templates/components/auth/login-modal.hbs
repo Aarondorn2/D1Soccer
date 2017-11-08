@@ -44,9 +44,8 @@
               <div class="clearfix" />
             {{/if}}
 
-            {{#link-to 'register'}}
-              <a class="btn login-btn pull-left" ><button class="btn" data-dismiss="modal">Register</button></a>
-            {{/link-to}}
+            <a {{action "routeToRegister"}} class="btn login-btn pull-left" ><button class="btn" data-dismiss="modal">Register</button></a>
+
             <a {{action "signIn" "password"}} class="btn login-btn pull-right" ><button class="btn" id="login-button">Login</button></a>
             <div class="clearfix" />
 

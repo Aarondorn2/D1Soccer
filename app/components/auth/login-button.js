@@ -1,7 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  routing: Ember.inject.service('-routing'),
+  router: Ember.inject.service(),
+  session: Ember.inject.service(),
   tagName: 'li',
 
     actions: {
@@ -11,7 +12,7 @@ export default Ember.Component.extend({
       },
       logout: function() {
         this.get("session").close();
-        this.get('routing').transitionTo('application');
+        this.get('router').transitionTo('application');
       }
     }
 });

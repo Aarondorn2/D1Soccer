@@ -2,7 +2,7 @@ import Ember from 'ember';
 const {Logger} = Ember;
 
 export default Ember.Component.extend({
-  routing: Ember.inject.service('-routing'),
+  router: Ember.inject.service(),
   session: Ember.inject.service(),
   email: "",
   password: "",
@@ -37,7 +37,7 @@ export default Ember.Component.extend({
       this.get('session').open('firebase', providerData).then(
         function() { //success
           Ember.$('#login-modal').modal('hide');
-          this.get('routing').transitionTo('secure.dashboard');
+          this.get('router').transitionTo('secure.dashboard');
         }.bind(this),
         function(error) { //fail
           switch (error.code) {
@@ -62,6 +62,10 @@ export default Ember.Component.extend({
 
     submitLogin: function() {
       Ember.$('#login-button').click();
+    },
+
+    routeToRegister: function() {
+      this.get('router').transitionTo('auth.register');
     }
   }
 });
