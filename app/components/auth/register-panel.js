@@ -1,6 +1,7 @@
 import Ember from 'ember';
 const {Logger} = Ember;
 
+//TODO add fields for gender and preferred position
 export default Ember.Component.extend({
   firebaseApp: Ember.inject.service(),
   router: Ember.inject.service(),
@@ -65,6 +66,10 @@ export default Ember.Component.extend({
         Ember.$('#registration-button').attr("disabled", true);
         //load spinner
         Ember.$('.registration-spinner').css('display', 'inline-block');
+        //reset errors
+        this.set('isEmailInUse', false);
+        this.set('isUnknownError', false);
+
 
         let session = this.get('session');
         let isAuthenticated = session.get('isAuthenticated');
@@ -97,15 +102,27 @@ export default Ember.Component.extend({
           ).then(
             ()=>{
               //update session
-              session.fetch().catch((error) => {
-                Logger.warn(error);
-              }).then(() => {
-                  //save user
-                  user.save().then(() => {
-                    //transition
-                    this.get('router').transitionTo('secure.dashboard');
-                  });
-              })
+              session.fetch()
+                .then(() => {
+                    //save user
+                    user.save().then(() => {
+                      //send verification email
+                      let fUser = this.get('firebaseApp').auth().currentUser;
+                      fUser.sendEmailVerification()
+                        .then(function() {
+                          //transition
+                          this.get('router').transitionTo('secure.dashboard');
+                        }.bind(this))
+                        .catch(function(error) {
+                          //log and continue - they can resend...
+                          Logger.error(error);
+                          this.get('router').transitionTo('secure.dashboard');
+                        });
+                    });
+                })
+                .catch((error) => {
+                  Logger.error(error); //couldn't update session?
+                })
           }).catch((error) =>{
               if (error.code == 'auth/email-already-in-use') {
                 this.set('isEmailInUse', true);

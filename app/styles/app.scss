@@ -1,12 +1,14 @@
 @import "bootstrap-custom";
 @import "font-awesome";
 @import 'd1site';
-@import 'components/menu/nav-scrollspy';
 @import 'components/contact-card';
-@import 'components/auth/login-modal';
-@import 'components/form/validation-tip';
+@import 'components/alert-message';
 @import 'components/auth/register-panel';
+@import 'components/auth/login-modal';
+@import 'components/auth/verify-email-panel';
+@import 'components/form/validation-tip';
 @import 'components/form/bootstrap-input';
+@import 'components/menu/nav-scrollspy';
 
 html, body {
     max-width: 100%;
@@ -67,4 +69,32 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+
+@media screen and (min-width: 992px) {
+  .mediumPage {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .smallPage {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+@media screen and (min-width: 438px) {
+  .xSmallPage {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
 }

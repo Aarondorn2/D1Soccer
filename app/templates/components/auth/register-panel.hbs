@@ -5,26 +5,16 @@
   <div class="panel-body panel-body-registration">
 
     <div class="row">
-      {{#if session.isAuthenticated}}
-        <div class="alert alert-info alert-registration">
-             <p>It looks like this is the first time you've signed in with the email: <b>{{email}}</b>.</p>
-             <p>Please fill in the information below to finish creating an account.</p>
-        </div>
-        <br />
-      {{/if}}
-      {{#if isEmailInUse}}
-        <div class="alert alert-danger alert-registration">
-             <p>It looks like this is email is already in use: <b>{{email}}</b>.</p>
-             <p>Please sign in or create an account with a different email address.</p>
-        </div>
-        <br />
-      {{else if isUnknownError}}
-        <div class="alert alert-danger alert-registration">
-             <p>An unknown error occurred.</p>
-             <p>Please try again later or notify the website administrator.</p>
-        </div>
-        <br />
-      {{/if}}
+
+      {{#alert-message display=session.isAuthenticated type='info' }}
+           <p>It looks like this is the first time you've signed in with the email: <b>{{email}}</b>.</p>
+           <p>Please fill in the information below to finish creating an account.</p>
+      {{/alert-message}}
+      {{#alert-message display=isEmailInUse type='danger' }}
+         <p>It looks like this is email is already in use: <b>{{email}}</b>.</p>
+         <p>Please sign in or create an account with a different email address.</p>
+      {{/alert-message}}
+      {{alert-message display=isUnknownError }}
 
       <div class="col-md-12">
         <div class="row registration-input-row">

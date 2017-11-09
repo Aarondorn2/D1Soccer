@@ -8,18 +8,12 @@
   margin-top: 10px;
 }
 
-.alert-registration {
-  text-align: center;
-  width: 90%;
-  margin: auto;
-}
-
 .registration-spinner {
   display: none;
   padding-left: 20px;
 }
 
-@media screen and (min-width: 990px) {
+@media screen and (min-width: 992px) {
   .validation-tip-registration-email {
       padding-top: 27px;
   }
