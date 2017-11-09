@@ -8,13 +8,6 @@ module.exports = function(environment) {
     rootURL: '/',
     locationType: 'auto',
 
-    firebase: {
-      apiKey: 'AIzaSyBqOgivaTAgl8NfjKFfujNlkUnpCuHd5bI',
-      authDomain: 'd1soccer-dev.firebaseapp.com',
-      databaseURL: 'https://d1soccer-dev.firebaseio.com',
-      storageBucket: 'd1soccer-dev.appspot.com',
-      messagingSenderId: '650769926530'
-    },
 
     torii: {
       sessionServiceName: 'session'
@@ -56,6 +49,16 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+
+        //point to -stg project
+      ENV.firebase = {
+        apiKey: 'AIzaSyBqOgivaTAgl8NfjKFfujNlkUnpCuHd5bI',
+        authDomain: 'd1soccer-dev.firebaseapp.com',
+        databaseURL: 'https://d1soccer-dev.firebaseio.com',
+        storageBucket: 'd1soccer-dev.appspot.com',
+        messagingSenderId: '650769926530'
+      };
   }
 
   if (environment === 'test') {
@@ -67,6 +70,18 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+  }
+
+  if (environment === 'stg') {
+
+    //point to -stg project
+    ENV.firebase = {
+      apiKey: "AIzaSyC5XHtz5BDIsrSqH3SNqNMG4u6s_TbqLTA",
+      authDomain: "d1soccer-stg.firebaseapp.com",
+      databaseURL: "https://d1soccer-stg.firebaseio.com",
+      storageBucket: "d1soccer-stg.appspot.com",
+      messagingSenderId: "299942619453"
+    };
   }
 
   if (environment === 'production') {

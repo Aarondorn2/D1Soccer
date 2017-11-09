@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "d1soccer-dev"
+    "default": "d1soccer-dev",
+    "stg": "d1soccer-stg",
+    "dev": "d1soccer-dev"
   }
 }

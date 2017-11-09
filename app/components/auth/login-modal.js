@@ -2,6 +2,7 @@ import Ember from 'ember';
 const {Logger} = Ember;
 
 export default Ember.Component.extend({
+  firebaseApp: Ember.inject.service(),
   router: Ember.inject.service(),
   session: Ember.inject.service(),
   email: "",
@@ -68,6 +69,12 @@ export default Ember.Component.extend({
         Ember.$('#reset-spinner').toggleClass('show').toggleClass('hide');
         Ember.$('#reset-button').attr("disabled", true);
 
+        let auth = this.get('firebaseApp').auth();
+        auth.sendPasswordResetEmail(resetEmail).then(function() {
+          // Email sent.
+        }).catch(function(error) {
+          // An error happened.
+        });
       } else {
         //TODO validation instead?
       }
