@@ -1,7 +1,7 @@
 import Ember from 'ember';
 const {Logger} = Ember;
 
-//TODO add fields for gender and preferred position
+//TODO add fields for gender and preferred position. switch to model injection via route? Move validation to model?
 export default Ember.Component.extend({
   firebaseApp: Ember.inject.service(),
   router: Ember.inject.service(),

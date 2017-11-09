@@ -9,12 +9,12 @@
   padding: 3% 3%;
 }
 
-.login-email {
+.login-email, .reset-password {
   max-width: 300px;
   margin: auto;
 }
 
-.login-email .input-group-addon {
+.login-email .input-group-addon, .reset-password .input-group-addon {
   // color: #0078b3;
   color: #e51937;
 }

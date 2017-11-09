@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
-  afterModel(model) {
+  afterModel() {
     let currentUser = this.get('session').get('currentUser');
 
     if (currentUser && currentUser.emailVerified) {

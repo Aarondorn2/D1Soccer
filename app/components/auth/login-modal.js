@@ -5,12 +5,14 @@ export default Ember.Component.extend({
   router: Ember.inject.service(),
   session: Ember.inject.service(),
   email: "",
+  resetEmail: "",
   password: "",
   errorMessage: "",
 
   actions: {
     signIn: function(provider) {
-      //set spinner
+      //debounce button
+      Ember.$('#login-button').attr("disabled", true);
 
       let providerData = {provider: provider};
 
@@ -20,6 +22,7 @@ export default Ember.Component.extend({
           providerData.password = this.get('password');
         } else {
           this.set('errorMessage', 'Please provide an email and password.');
+          Ember.$('#login-button').attr("disabled", false);
           return;
         }
       } else if (provider === "google") {
@@ -51,13 +54,32 @@ export default Ember.Component.extend({
               break;
           }
           Logger.error(error);
+          Ember.$('#login-button').attr("disabled", false);
         }.bind(this)
       );
 
     },
 
+    resetPassword: function() {
+      //spin and debounce
+      let resetEmail = this.get('resetEmail');
+
+      if(resetEmail) {
+        Ember.$('#reset-spinner').toggleClass('show').toggleClass('hide');
+        Ember.$('#reset-button').attr("disabled", true);
+
+      } else {
+        //TODO validation instead?
+      }
+    },
+
     showEmail: function() {
       Ember.$('#login-email').toggleClass('show').toggleClass('hide');
+    },
+
+    showResetPassword: function() {
+      Ember.$('#login-email').toggleClass('show').toggleClass('hide');
+      Ember.$('#reset-password').toggleClass('show').toggleClass('hide');
     },
 
     submitLogin: function() {

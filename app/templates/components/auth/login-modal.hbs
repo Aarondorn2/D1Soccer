@@ -29,6 +29,9 @@
               <span class="input-group-addon">{{fa-icon "lock" fixedWidth=true}}</span>
               {{input type="password" value=password placeholder="Password" class="form-control" insert-newline="submitLogin"}}
             </div>
+            <a {{action "showResetPassword"}} href="#" style="font-size: .8em;">Forgot Password?</a>
+            <br  />
+
 
             <br>
             {{#if errorMessage}}
@@ -49,8 +52,31 @@
             <a {{action "signIn" "password"}} class="btn login-btn pull-right" ><button class="btn" id="login-button">Login</button></a>
             <div class="clearfix" />
 
-          </div>
+          </div> {{!-- <div id="login-email" class="login-email hide"> --}}
 
+          <div id="reset-password" class="reset-password hide">
+              <div class="alert alert-info" style="text-align: center">
+                Enter your email address and we'll send a reset link.
+              </div>
+              <div class="input-group">
+                <span class="input-group-addon">{{fa-icon "user" fixedWidth=true}}</span>
+                {{input type="text" value=resetEmail placeholder="Email" class="form-control" insert-newline="submitLogin"}}
+              </div>
+
+              <br />
+              <div class="reset-spinner" style="text-align:center;" class="hide" id="reset-spinner">
+                {{fa-icon "spinner" spin=true size=4}}
+              </div>
+              <div class="clearfix" />
+
+              <div style="text-align: center">
+                <a {{action "resetPassword"}} class="btn login-btn" ><button class="btn" id="reset-button">Send Reset Email</button></a>
+              </div>
+
+
+
+
+          </div>
         </div>
 
       </div>
