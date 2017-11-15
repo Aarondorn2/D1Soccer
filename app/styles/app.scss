@@ -31,6 +31,13 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+.dark-bg {
+  background: url('/assets/images/bg-blackpaper.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 .content-container {
   padding: 40px 30px 30px 30px;
 }
