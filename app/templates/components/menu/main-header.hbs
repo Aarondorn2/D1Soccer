@@ -1,0 +1,88 @@
+<div class="header header-wrapper">
+
+  <!-- top header bar -->
+	<div id="header-top" class="navbar">
+      <div class="container">
+          <div class="row">
+
+            <ul class="social-icons medium round pull-right">
+  	    	      <li><a class="social-icon" href="http://www.facebook.com/D1Sports" target="_blank"><i class="fa fa-facebook"></i></a></li>
+    	          <li><a class="social-icon" href="http://www.twitter.com/D1Sports" target="_blank"><i class="fa fa-twitter"></i></a></li>
+  	            <li><a class="social-icon" href="http://instagram.com/D1Sports" target="_blank"><i class="fa fa-instagram"></i></a></li>
+  	            <li><a class="social-icon" href="https://www.pinterest.com/d1sportstrain/" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+  	        </ul>
+
+  	        <div class="logo-primary">
+  	    	    <a href="/">
+  	    	        <img src="/assets/images/logo-120x140.png" class="img-responsive" alt="D1SportsTraining.com">
+  	    	    </a>
+  	        </div>
+
+	        </div> {{!-- <div class="row"> --}}
+      </div> {{!-- <div class="container"> --}}
+    </div> {{!-- <div  id="header-top" class="navbar"> --}}
+
+    <!-- bottom header bar -->
+    <div id="header-bottom" class="navbar">
+        <div class="container">
+          <div class="row">
+
+            <div class="navbar-header">
+                <!-- mobile menu button -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="navbar-toggle-text">MENU</span>
+                    <i class="fa fa-bars fa-2x"></i>
+                </button>
+            </div>
+
+            <!-- Navigation Dropdown Menu -->
+            <div class="navbar-collapse collapse navbar-mainnav" id="mainnav">
+                <ul class="nav navbar-nav">
+
+                  <li class="dropdown" >
+                  		<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+												League <span class="caret"></span>
+		                  </a>
+						          <ul class="dropdown-menu">
+													{{#link-to 'league.information' tagName="li"}}
+						                <a class="nav-link" href="#" target="_top">Information</a>
+						              {{/link-to}}
+
+													{{#link-to 'league.news' tagName="li"}}
+						                <a class="nav-link" href="#" target="_top">News</a>
+						              {{/link-to}}
+
+													{{#link-to 'league.schedule' tagName="li"}}
+						                <a class="nav-link" href="#" target="_top">Schedule</a>
+						              {{/link-to}}
+
+													{{#link-to 'league.standings' tagName="li"}}
+						                <a class="nav-link" href="#" target="_top">Standings</a>
+						              {{/link-to}}
+		                	</ul>
+                  </li>
+
+									{{#link-to 'album' tagName="li"}}
+                  		<a class="nav-link" href="#" target="_top">Photos</a>
+                  {{/link-to}}
+									{{#link-to 'contact' tagName="li"}}
+                  		<a class="nav-link" href="#" target="_top">Contact</a>
+                  {{/link-to}}
+
+                </ul> {{!-- <ul class="nav navbar-nav"> --}}
+				        <ul class="nav navbar-nav navbar-right" style="margin-left: -15px;">
+										{{#if session.isAuthenticated}}
+											{{#link-to 'secure.dashboard' tagName="li"}}
+													<a class="nav-link" href="/secure/dashboard" target="_top">Dashboard</a>
+											{{/link-to}}
+										{{/if}}
+
+										{{auth/login-button}}
+				        </ul>
+            </div>
+
+        </div>
+      </div>
+    </div> {{!-- <div id="header-bottom" class="navbar"> --}}
+
+</div> {{!-- <div class="header header-wrapper"> --}}

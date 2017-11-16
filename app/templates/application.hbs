@@ -1,5 +1,12 @@
-{{!-- <div class="container"> --}}
-  {{#main-header}}{{/main-header}}
 
-  {{outlet}}
-{{!-- </div> --}}
+{{#menu/main-header}}{{/menu/main-header}}
+
+{{#if session.isAuthenticated}}
+{{else}}
+  {{auth/login-modal}} {{!-- needs to be on main template --}}
+{{/if}}
+
+{{outlet}}
+
+
+{{#menu/main-footer}}{{/menu/main-footer}}

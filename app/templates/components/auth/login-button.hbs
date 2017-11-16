@@ -1,0 +1,5 @@
+{{#if session.isAuthenticated}}
+    <a {{action "logout"}} href="#" target="_top">Log Out</a>
+{{else}}
+    <a {{action "showLoginModal"}} href="#" target="_top">Log In / Join</a>
+{{/if}}

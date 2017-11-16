@@ -1,0 +1,96 @@
+{{yield}}
+<div id="login-modal" class="modal fade" role="dialog">
+  <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" id="login-modal-dismiss" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Login <small>select a login method</small></h4>
+        </div>
+        <div class="modal-body login-modal-body">
+          <div class="login-modal-icons">
+            <a {{action "signIn" "facebook"}} class="btn login-modal-icon" title="Sign in with Facebook">{{fa-icon "facebook"}}</a>
+            <a {{action "signIn" "twitter"}} class="btn login-modal-icon" title="Sign in with Twitter">{{fa-icon "twitter"}}</a>
+            <a {{action "signIn" "google"}} class="btn login-modal-icon" title="Sign in with Google">{{fa-icon "google"}}</a>
+            <a {{action "showEmail"}} class="btn login-modal-icon" title="Sign in with an Email and Password">{{fa-icon "envelope"}}</a>
+          </div>
+
+          <hr />
+
+          <div id="login-email" class="login-email hide">
+
+            <div class="input-group">
+              <span class="input-group-addon">{{fa-icon "user" fixedWidth=true}}</span>
+              {{input type="text" value=email placeholder="Email" class="form-control" insert-newline="submitLogin"}}
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon">{{fa-icon "lock" fixedWidth=true}}</span>
+              {{input type="password" value=password placeholder="Password" class="form-control" insert-newline="submitLogin"}}
+            </div>
+            <a {{action "showResetPassword"}} href="#" style="font-size: .8em;">Forgot Password?</a>
+            <br  />
+
+
+            <br>
+            {{#if errorMessage}}
+              <div class="login-error">
+                {{errorMessage}}
+              </div>
+              <br />
+            {{/if}}
+            {{#if session.isWorking}}
+              <div class="login-spinner">
+                {{fa-icon "spinner" spin=true size=4}}
+              </div>
+              <div class="clearfix" />
+            {{/if}}
+
+            <a {{action "routeToRegister"}} class="btn login-btn pull-left" ><button class="btn" data-dismiss="modal">Register</button></a>
+
+            <a {{action "signIn" "password"}} class="btn login-btn pull-right" ><button class="btn" id="login-button">Login</button></a>
+            <div class="clearfix" />
+
+          </div> {{!-- <div id="login-email" class="login-email hide"> --}}
+
+          <div id="reset-password" class="reset-password hide">
+
+              {{#alert-message display=isPasswordResetFirstAttempt type='info'}}
+                Enter your email address and we'll send a reset link.
+              {{/alert-message}}
+              {{#alert-message display=isPasswordResetSuccess type='success'}}
+                Success!  A password reset link was emailed to you.
+              {{/alert-message}}
+
+              {{#alert-message display=isPasswordResetBadEmailError type='danger'}}
+                This email is invalid or does not belong to an account.
+              {{/alert-message}}
+              {{alert-message display=isPasswordResetUnknownError type='danger'}}
+
+              <div class="input-group">
+                <span class="input-group-addon">{{fa-icon "user" fixedWidth=true}}</span>
+                {{input type="text" value=resetEmail placeholder="Email" class="form-control" insert-newline="submitLogin"}}
+              </div>
+
+              <br />
+              <div class="reset-spinner" style="text-align:center;" class="hide" id="reset-spinner">
+                {{fa-icon "spinner" spin=true size=4}}
+              </div>
+              <div class="clearfix" />
+
+              <div style="text-align: center">
+                <a {{action "resetPassword"}} class="btn login-btn" ><button class="btn" id="reset-button">Send Reset Email</button></a>
+              </div>
+
+
+
+
+          </div> {{!-- <div id="reset-password" class="reset-password hide"> --}}
+        </div> {{!-- <div class="modal-body login-modal-body"> --}}
+
+      </div>
+
+    </div>
+  </div>
+</div>

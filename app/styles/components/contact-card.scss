@@ -1,0 +1,32 @@
+
+//contact card
+.contact-card-heading {
+  text-align: center;
+  background: url('/assets/images/bg-red-locations.jpg');
+  padding: 2px 15px 6px 15px;
+}
+.contact-card-heading h3 {
+  color: #ffffff;
+  text-shadow: none;
+}
+.contact-card-heading h6 {
+  color: #d0cfd2;
+}
+
+.contact-card-body {
+  padding: 10px;
+  text-align:left;
+}
+.contact-card-body .row {
+  padding: 5px 0px;
+}
+.contact-card-footer .btn-primary {
+  background-color: #851a24;
+}
+.contact-card {
+  margin: auto;
+  margin-bottom: 20px;
+  text-align:center;
+  border-color: black;
+  max-width: 320px;
+}

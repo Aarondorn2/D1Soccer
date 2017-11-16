@@ -1,0 +1,21 @@
+{{!-- label --}}
+<label for={{tag}}>{{label}}</label>
+{{#if required}}
+  <span class="required-asterisk" />
+{{/if}}
+
+
+{{!-- inputs --}}
+{{#if mask}}
+  {{#if maskedValue}}
+    {{input-mask mask=mask value=value class="form-control" tag=id}}
+  {{else}}
+    {{input-mask mask=mask unmaskedValue=value class="form-control" tag=id}}
+  {{/if}}
+{{else if isDropdown}}
+  <select class="form-control" id={{tag}}>
+    {{yield}}
+  </select>
+{{else}}
+  {{input type=type value=value class="form-control" tag=id}}
+{{/if}}

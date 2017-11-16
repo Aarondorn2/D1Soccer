@@ -1,0 +1,56 @@
+<div class="panel contact-card">
+  <div class="panel-heading contact-card-heading">
+    <h3>{{title}}</h3>
+    <h6>{{subtitle}} </h6>
+  </div>
+  <div class="panel-body contact-card-body">
+      {{yield}}
+      {{#if person}}
+        <div class="row">
+          <div class="col-sm-1">
+            {{fa-icon "user" fixedWidth=true }}
+          </div>
+          <div class="col-sm-10">
+          <b>{{person}}</b>
+          </div>
+        </div>
+      {{/if}}
+      {{#if phone}}
+        <div class="row">
+          <div class="col-sm-1">
+            {{fa-icon "phone-square" fixedWidth=true }}
+          </div>
+          <div class="col-sm-10">
+          {{phone}}
+          </div>
+        </div>
+      {{/if}}
+      {{#if email}}
+        <div class="row">
+          <div class="col-sm-1">
+            {{fa-icon "envelope" fixedWidth=true }}
+          </div>
+          <div class="col-sm-10">
+          {{email}}
+          </div>
+        </div>
+      {{/if}}
+      {{#if addr}}
+        <div class="row">
+          <div class="col-sm-1">
+            {{fa-icon "map-marker" fixedWidth=true }}
+          </div>
+          <div class="col-sm-10">
+          {{addr}}
+          </div>
+        </div>
+      {{/if}}
+  </div>
+  {{#if website}}
+    <div class="panel-footer contact-card-footer">
+      <a href="{{website}}" class="btn btn-primary btn-large">
+        Visit Website!
+      </a>
+    </div>
+  {{/if}}
+</div>

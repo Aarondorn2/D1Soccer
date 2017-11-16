@@ -1,14 +1,73 @@
-@import "bootstrap";
+@import "bootstrap-custom";
+@import "font-awesome";
 @import 'd1site';
-@import 'ember-cli-font-awesome-sass';
+@import 'components/contact-card';
+@import 'components/alert-message';
+@import 'components/auth/register-panel';
+@import 'components/auth/login-modal';
+@import 'components/auth/verify-email-panel';
+@import 'components/form/validation-tip';
+@import 'components/form/bootstrap-input';
+@import 'components/menu/nav-scrollspy';
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 body {
   background-color: transparent; //clear styling from other CSS files
 }
-html {
-  background: url('http://www.xsjjys.com/data/out/293/WHDQ-514250955.jpg') no-repeat center center fixed;
+.main-bg {
+  background: url('/assets/images/bg-soccer.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+.page-bg {
+  background: url('/assets/images/bg-maincontent.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.dark-bg {
+  background: url('/assets/images/bg-blackpaper.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.content-container {
+  padding: 40px 30px 30px 30px;
+  min-height: calc(100vh - 160px); //160px is header+footer height.  This ensures footer is always on bottom!
+}
+.jumbotron {
+  text-align: center;
+}
+.subheader {
+    text-align: center;
+    margin-top: 8%;
+}
+
+.ember-cli-g-map {
+  height: 400px;
+}
+
+//twitter timeline on news page
+.timeline-Header {
+  text-align: center;
+  background: url('/assets/images/bg-red-locations.jpg');
+}
+.timeline-Header h1 {
+  color: #ffffff;
+  text-shadow: none;
+}
+
+.hide {
+  display:none;
+}
+
+.show {
+  display: block;
 }

@@ -1,0 +1,16 @@
+
+{{#if display}}
+
+  {{#if hasBlock}} 
+    <div class="alert alert-{{type}} alert-message">
+      {{yield}}
+    </div>
+    <br />
+  {{else}} {{!-- default to unknown error --}}
+    <div class="alert alert-danger alert-message">
+         <p>An unknown error occurred.</p>
+         <p>Please try again later or notify the website administrator.</p>
+    </div>
+    <br />
+  {{/if}}
+{{/if}}

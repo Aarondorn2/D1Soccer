@@ -1,0 +1,7 @@
+{{#partial/content-container}}
+
+    {{#if session.isAuthenticated}}
+    {{else}}
+      {{auth/login-page}}
+    {{/if}}
+{{/partial/content-container}}

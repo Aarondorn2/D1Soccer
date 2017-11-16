@@ -1,0 +1,52 @@
+{{!-- TODO: NEED LAZY LOAD AND PAGINATION!  --}}
+{{!-- Also change second input to a larger area and put validation on both --}}
+{{!-- and style buttons  --}}
+
+{{#partial/content-container}}
+
+    <div class="panel-group" style="width:80%;  margin: 0 auto;">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <b>Announcements</b> (Click on an Announcement to Edit)
+          <button class="btn btn-success btn-xs pull-right" {{action 'addAnnouncement'}}>Create Announcement</button>
+        </div>
+        <div class="panel-body">
+        {{#each sortedModel as |announcement|}}
+          {{!-- {{#announcement-item item=announcement}}{{/announcement-item}} --}}
+
+            {{#if announcement.isEditing}}
+              <form {{action 'saveAnnouncement' announcement on='submit'}}>
+                <div class="panel panel-primary ">
+                    <div class="panel-heading">
+                      {{input value=announcement.title class="form-control"}}
+                    </div>
+                    <div class="panel-body" >
+                      {{input value=announcement.content class="form-control"}}
+                    </div>
+                    <div class="panel-footer">
+                      <div class="input-group-btn">
+                        <button type="submit" class="btn btn-success" >Save</button>
+                        <button class="btn btn-warn" {{action 'cancelAnnouncementEdit' announcement}}>Cancel</button>
+                        <button class="btn btn-danger" {{action 'deleteAnnouncement' announcement}}>Delete</button>
+                      </div>
+                    </div>
+                </div>
+              </form>
+            {{else}}
+              <div class="panel panel-primary " {{action "editAnnouncement" announcement}}>
+                <div class="panel-heading">
+                  {{announcement.title}}
+                </div>
+                <div class="panel-body" >
+                    {{announcement.content}}
+                </div>
+              </div>
+            {{/if}}
+
+        {{/each}}
+      </div>
+      </div>
+    </div>
+
+{{/partial/content-container}}
