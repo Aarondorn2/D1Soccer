@@ -74,3 +74,7 @@ body.modal-open,
 .modal-open .navbar-fixed-bottom {
   padding-right: 0px !important;
 }
+//fix modal backdrop for mobile
+body.modal-open div.modal-backdrop {
+    z-index: 0;
+}
