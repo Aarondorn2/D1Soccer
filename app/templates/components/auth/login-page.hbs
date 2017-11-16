@@ -1,4 +1,8 @@
-{{yield}}
-<div style="text-align:center;">
-  <a {{action "showSignin"}} href="#" ><h4>Please Log In to Continue</h4></a>
-</div>
+
+{{#if isPasswordReset}}
+  {{auth/password-reset-panel resetEmail=resetEmail isInvalidCode=isInvalidCode isUnknownError=isUnknownError}}
+{{else}}
+  <div style="text-align:center;">
+    <a {{action "showSignin"}} href="#" ><h4>Please Log In to Continue</h4></a>
+  </div>
+{{/if}}

@@ -55,9 +55,19 @@
           </div> {{!-- <div id="login-email" class="login-email hide"> --}}
 
           <div id="reset-password" class="reset-password hide">
-              <div class="alert alert-info" style="text-align: center">
+
+              {{#alert-message display=isPasswordResetFirstAttempt type='info'}}
                 Enter your email address and we'll send a reset link.
-              </div>
+              {{/alert-message}}
+              {{#alert-message display=isPasswordResetSuccess type='success'}}
+                Success!  A password reset link was emailed to you.
+              {{/alert-message}}
+
+              {{#alert-message display=isPasswordResetBadEmailError type='danger'}}
+                This email is invalid or does not belong to an account.
+              {{/alert-message}}
+              {{alert-message display=isPasswordResetUnknownError type='danger'}}
+
               <div class="input-group">
                 <span class="input-group-addon">{{fa-icon "user" fixedWidth=true}}</span>
                 {{input type="text" value=resetEmail placeholder="Email" class="form-control" insert-newline="submitLogin"}}
@@ -76,8 +86,8 @@
 
 
 
-          </div>
-        </div>
+          </div> {{!-- <div id="reset-password" class="reset-password hide"> --}}
+        </div> {{!-- <div class="modal-body login-modal-body"> --}}
 
       </div>
 

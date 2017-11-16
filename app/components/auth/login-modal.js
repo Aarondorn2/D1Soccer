@@ -8,6 +8,15 @@ export default Ember.Component.extend({
   email: "",
   resetEmail: "",
   password: "",
+  isSendSuccess: false,
+  isPasswordResetUnknownError: false,
+  isPasswordResetBadEmailError: false,
+  isPasswordResetSuccess: false,
+  isPasswordResetFirstAttempt: Ember.computed('isPasswordResetUnknownError','isPasswordResetBadEmailError', 'isPasswordResetSuccess', function() {
+    return !this.get('isPasswordResetUnknownError')
+    && !this.get('isPasswordResetBadEmailError')
+    && !this.get('isPasswordResetSuccess'); //if theres another message to display, this is false
+  }),
   errorMessage: "",
 
   actions: {
@@ -48,7 +57,7 @@ export default Ember.Component.extend({
             case "auth/invalid-email":
             case "auth/user-not-found":
             case "auth/wrong-password":
-              this.set('errorMessage', 'The email/password you provided are invalid.  Please try again.');
+              this.set('errorMessage', 'The email/password you provided are invalid.  Please try again.'); //TODO use alert-message instead
               break;
             default:
               this.set('errorMessage', 'An unknown error has occured.  Please try again later.');
@@ -62,22 +71,41 @@ export default Ember.Component.extend({
     },
 
     resetPassword: function() {
-      //spin and debounce
       let resetEmail = this.get('resetEmail');
 
       if(resetEmail) {
+        //spin and debounce
         Ember.$('#reset-spinner').toggleClass('show').toggleClass('hide');
         Ember.$('#reset-button').attr("disabled", true);
 
+        //reset flags
+        this.set('isPasswordResetBadEmailError', false);
+        this.set('isPasswordResetUnknownError', false);
+
+
         let auth = this.get('firebaseApp').auth();
-        auth.sendPasswordResetEmail(resetEmail).then(function() {
-          // Email sent.
-        }).catch(function(error) {
-          // An error happened.
-        });
+        auth.sendPasswordResetEmail(resetEmail)
+          .then(function() {
+            this.set('isPasswordResetSuccess', true);
+          }.bind(this))
+          .catch(function(error) {
+            switch (error.code) {
+              case "auth/invalid-email":
+              case "auth/user-not-found":
+                this.set('isPasswordResetBadEmailError', true);
+                break;
+              default:
+                this.set('isPasswordResetUnknownError', true);
+                break;
+              }
+            Logger.error(error);
+            Ember.$('#reset-button').attr("disabled", false); //enable button so they can re-try
+          }.bind(this));
       } else {
-        //TODO validation instead?
+        this.set('isPasswordResetBadEmailError', true);
       }
+      //remove spinner
+      Ember.$('#reset-spinner').toggleClass('show').toggleClass('hide');
     },
 
     showEmail: function() {

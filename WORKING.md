@@ -26,4 +26,4 @@
 
 ## Errors / Bug Fixes
 
-* login modal on mobile device doesn't let you click on anything
+* ~~login modal on mobile device doesn't let you click on anything~~

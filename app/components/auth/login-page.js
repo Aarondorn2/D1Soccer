@@ -17,7 +17,7 @@ export default Ember.Component.extend({
 
     //check to see if this is a callback
     let mode = this.get('queryParams').get('mode');
-    if (mode && mode === 'resetPassword') {
+    if (mode && mode === 'resetPassword') { //reset password! woo!
         this.set('isPasswordReset', true);
 
         let oobCode = this.get('queryParams').get('oobCode');
@@ -45,7 +45,9 @@ export default Ember.Component.extend({
   didRender() {
     this._super(...arguments);
 
-    Ember.$('#login-modal').modal('show');
+    if(!this.get('isPasswordReset')) { //if password reset, show that aenl
+      Ember.$('#login-modal').modal('show');
+    }
   },
   willClearRender() {
     this._super(...arguments);
