@@ -62,15 +62,5 @@ export default Ember.Component.extend({
                 Logger.error(error);
             });
       }
-    },
-    didRender() {
-      this._super(...arguments);
-
-      Ember.$('.footer').removeClass('xSmallPage').addClass('xSmallPage');
-    },
-    willClearRender() {
-      this._super(...arguments);
-
-      Ember.$('.footer').removeClass('xSmallPage');
     }
 });

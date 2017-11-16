@@ -40,6 +40,7 @@ body {
 }
 .content-container {
   padding: 40px 30px 30px 30px;
+  min-height: calc(100vh - 160px); //160px is header+footer height.  This ensures footer is always on bottom!
 }
 .jumbotron {
   text-align: center;
@@ -69,39 +70,4 @@ body {
 
 .show {
   display: block;
-}
-
-.emptyPage {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-
-@media screen and (min-width: 992px) {
-  .mediumPage {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .smallPage {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
-}
-
-@media screen and (min-width: 438px) {
-  .xSmallPage {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
 }
