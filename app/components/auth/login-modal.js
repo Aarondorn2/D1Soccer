@@ -70,7 +70,7 @@ export default Ember.Component.extend({
 
     },
 
-    resetPassword: function() {
+    resetPassword: function() { //TODO captcha ,email validation
       let resetEmail = this.get('resetEmail');
 
       if(resetEmail) {
@@ -87,6 +87,9 @@ export default Ember.Component.extend({
         auth.sendPasswordResetEmail(resetEmail)
           .then(function() {
             this.set('isPasswordResetSuccess', true);
+            this.set('resetEmail', '');
+            Ember.$('#reset-button').attr("disabled", false);
+
           }.bind(this))
           .catch(function(error) {
             switch (error.code) {
