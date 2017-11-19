@@ -10,6 +10,7 @@
 @import 'components/form/validation-tip';
 @import 'components/form/bootstrap-input';
 @import 'components/menu/nav-scrollspy';
+@import 'components/menu/nav-sidebar';
 
 html, body {
     max-width: 100%;
@@ -71,4 +72,9 @@ body {
 
 .show {
   display: block;
+}
+
+.secure-wrapper {
+    display: flex;
+    align-items: stretch;
 }
