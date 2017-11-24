@@ -3,10 +3,10 @@
 <!-- Sidebar Links -->
 <ul class="nav navbar-inverse">
     <li class="nav-header">Player</li>
-    <li class="active"><a href="#">{{fa-icon "tachometer" fixedWidth=true}} Dashboard</a></li>
+      <li class="active"><a href="#">{{fa-icon "tachometer" fixedWidth=true}} <span class="nav-item-title">Dashboard</span></a></li>
+      <li><a href="#">{{fa-icon "id-card" fixedWidth=true}} <span class="nav-item-title">Register</span></a></li>
+      <li><a href="#">{{fa-icon "users" fixedWidth=true}} <span class="nav-item-title">Join a Team</span></a></li>
 
-    <li><a href="#">{{fa-icon "id-card" fixedWidth=true}} Register</a></li>
-    <li><a href="#">{{fa-icon "users" fixedWidth=true}} Join a Team</a></li>
 
     {{!-- <li><!-- Link with dropdown items -->
         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
@@ -20,4 +20,8 @@
             <li><a href="#">Join a Team</a></li>
         </ul>
     </li> --}}
+</ul>
+<ul class="nav navbar-inverse nav-footer">
+    <li class="nav-header">User</li>
+      <li><a href="#">{{fa-icon "user" fixedWidth=true}} <span class="nav-item-title">Edit Profile</span></a></li>
 </ul>

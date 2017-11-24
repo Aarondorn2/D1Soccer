@@ -6,6 +6,11 @@
   transition: all 0.3s;
   padding-top: 40px;
 }
+.nav-sidebar .nav-footer {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
 .nav-sidebar ul {
   background-color: #272B30;
   background-image: none;
@@ -76,10 +81,20 @@
 }
 
 @media (max-width: 768px) {
-    .nav-sidebar {
-        margin-left: -250px;
+    // .nav-sidebar {
+    //     margin-left: -250px;
+    // }
+    // .nav-sidebar.active {
+    //     margin-left: 0;
+    // }
+    .nav-sidebar .nav-header {
+      display:none;
     }
-    .nav-sidebar.active {
-        margin-left: 0;
+    .nav-sidebar .nav-item-title {
+      display: none;
+    }
+    .secure-wrapper .nav-sidebar {
+      max-width: 48px;
+      min-width: 48px;
     }
 }
