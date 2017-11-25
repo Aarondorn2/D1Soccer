@@ -8,8 +8,8 @@ export default Route.extend({
       lng: -85.14845471, // Required
       // lat: 35.035266,
       // lng: -85.149367,
-      zoom: 17,
-      mapType: 'satellite', // Accepts 'roadmap', 'satellite', 'hybrid', or 'terrain'
+      zoom: 16,
+      mapType: 'hybrid', // Accepts 'roadmap', 'satellite', 'hybrid', or 'terrain'
       showMapTypeControl: true,
       clickableIcons: true,
       draggable: true,
@@ -25,7 +25,7 @@ export default Route.extend({
           lng: -85.14845471, // Required
           infoWindow: {
             content: '<div style="text-align:center;"><h5>D1 Chattanooga</h5><p>7430 Commons Blvd, Chattanooga, TN 37421</p></div>',
-            visible: true
+            visible: false
           }
         }
       ]

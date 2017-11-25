@@ -5,7 +5,7 @@ export default Ember.Route.extend({
   model() {
     let session = this.get('session');
 
-    if(!session.userInfo) { //if there is no user info associated with session, go fetch it
+    if(!session.userId) { //if there is no user obect associated with session, go fetch it
       let currentUser = session.get('currentUser');
       let userEmail = "notfound@notfound.notfound";
 
@@ -18,10 +18,9 @@ export default Ember.Route.extend({
   afterModel(model) {
     let session = this.get('session');
 
-    if(!session.userInfo) {
+    if(!session.userId) {
       if (model.content.length != 0) { //has an account already!
-        let jsonModel = model.map(function (x) { return x.toJSON(); }); //don't want to associate Ember Data Model with session - just the data...
-        session.userInfo = jsonModel[0]; //just use first record, shouldn't find multiple anyway
+        session.userId = model.get("firstObject").id; //just use first record, shouldn't find multiple anyway
 
         this.transitionTo('secure.dashboard'); //try to send them to dashbord.  If not authenticated, will send to home page
       }

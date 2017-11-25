@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('route:secure/admin/event', 'Unit | Route | secure/admin/event', {
+moduleFor('route:secure/admin/season-management', 'Unit | Route | secure/admin/season management', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });

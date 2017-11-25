@@ -1,5 +1,8 @@
 <div class="secure-wrapper">
-  {{menu/main-sidebar}}
-  {{outlet}}
+  {{menu/main-sidebar model=model}}
+
+  <div style="width:100%"> {{!-- fill the rest of the page --}}
+    {{outlet}}
+  </div>
 
 </div>

@@ -1,12 +1,61 @@
 
 
-<!-- Sidebar Links -->
-<ul class="nav navbar-inverse">
-    <li class="nav-header">Player</li>
-      <li class="active"><a href="#">{{fa-icon "tachometer" fixedWidth=true}} <span class="nav-item-title">Dashboard</span></a></li>
-      <li><a href="#">{{fa-icon "id-card" fixedWidth=true}} <span class="nav-item-title">Register</span></a></li>
-      <li><a href="#">{{fa-icon "users" fixedWidth=true}} <span class="nav-item-title">Join a Team</span></a></li>
+<!-- collapsed menu expand button -->
+<button type="button" class="navbar-collapse-button" {{action "showFullSidebar"}}>
+    {{fa-icon "bars" fixedWidth=true size=2}}
+    <hr />
+</button>
 
+<!-- Sidebar Links -->
+<ul class="nav navbar-inverse" id="sidebar-content">
+
+    <li class="nav-header">User</li>
+      {{#link-to 'secure.dashboard' tagName="li"}}
+        <a href="#">{{fa-icon "soccer-ball-o" fixedWidth=true}} <span class="nav-item-title">Dashboard</span></a>
+      {{/link-to}}
+      {{#link-to 'secure.profile' tagName="li"}}
+        <a href="#">{{fa-icon "user" fixedWidth=true}} <span class="nav-item-title">Edit Profile</span></a>
+      {{/link-to}}
+
+    {{#if user.isAllowedPlayer}}
+    <li class="nav-header">Player</li>
+      {{#link-to 'secure.player.register' tagName="li"}}
+        <a href="#">{{fa-icon "id-card" fixedWidth=true}} <span class="nav-item-title">Register</span></a>
+      {{/link-to}}
+      {{#link-to 'secure.player.join-team' tagName="li"}}
+        <a href="#">{{fa-icon "users" fixedWidth=true}} <span class="nav-item-title">Join a Team</span></a>
+      {{/link-to}}
+    {{/if}}
+
+    {{#if user.isAllowedCaptain}}
+    <li class="nav-header">Captain</li>
+      {{#link-to 'secure.captain.preferences' tagName="li"}}
+        <a href="#">{{fa-icon "sliders" fixedWidth=true}} <span class="nav-item-title">Team Preferences</span></a>
+      {{/link-to}}
+      {{#link-to 'secure.captain.roster' tagName="li"}}
+        <a href="#">{{fa-icon "clipboard" fixedWidth=true}} <span class="nav-item-title">Team Roster</span></a>
+      {{/link-to}}
+    {{/if}}
+
+
+    {{#if user.isAllowedAdmin}}
+    <li class="nav-header">Admin</li>
+      {{#link-to 'secure.admin.standings' tagName="li"}}
+        <a href="#">{{fa-icon "list-ol" fixedWidth=true}} <span class="nav-item-title">Standings / Scores</span></a>
+      {{/link-to}}
+      {{#link-to 'secure.admin.schedule' tagName="li"}}
+        <a href="#">{{fa-icon "calendar" fixedWidth=true}} <span class="nav-item-title">Schedule</span></a>
+      {{/link-to}}
+      {{#link-to 'secure.admin.announcements' tagName="li"}}
+        <a href="#">{{fa-icon "bullhorn" fixedWidth=true}} <span class="nav-item-title">Announcements</span></a>
+      {{/link-to}}
+      {{#link-to 'secure.admin.players' tagName="li"}}
+        <a href="#">{{fa-icon "address-book-o" fixedWidth=true}} <span class="nav-item-title">Players</span></a>
+      {{/link-to}}
+      {{#link-to 'secure.admin.season-management' tagName="li"}}
+        <a href="#">{{fa-icon "calendar-check-o " fixedWidth=true}} <span class="nav-item-title">Season Management</span></a>
+      {{/link-to}}
+    {{/if}}
 
     {{!-- <li><!-- Link with dropdown items -->
         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
@@ -22,6 +71,4 @@
     </li> --}}
 </ul>
 <ul class="nav navbar-inverse nav-footer">
-    <li class="nav-header">User</li>
-      <li><a href="#">{{fa-icon "user" fixedWidth=true}} <span class="nav-item-title">Edit Profile</span></a></li>
 </ul>
