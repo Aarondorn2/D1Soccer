@@ -1,0 +1,52 @@
+//table style
+.edit-table-panel .panel-body {
+  background-color: #1a1e1f;
+}
+
+//delete buttons
+.edit-table-panel .fa-delete {
+  font-size: medium;
+
+}
+.edit-table-panel .fa-delete:hover {
+  font-size: medium;
+  color: #a94442;
+}
+
+//editing style
+.edit-table-panel .edit-table-input .form-control { //gotta be really specific to override. :)
+  width: 100%;
+}
+
+//not gunna be pretty on mobile... do admin work on desktop! :P
+#seasonManagementTable_wrapper div:nth-child(2) {
+    overflow-x:auto !important;
+}
+
+//override sort icons (use FontAwesome)
+table.dataTable thead th {
+    position: relative;
+    background-image: none !important;
+}
+
+table.dataTable thead th.sorting:after,
+table.dataTable thead th.sorting_asc:after,
+table.dataTable thead th.sorting_desc:after {
+    position: absolute;
+    top: 12px;
+    right: 8px;
+    display: block;
+    font-family: FontAwesome;
+}
+table.dataTable thead th.sorting:after {
+    content: "\f0dc";
+    color: #ddd;
+    font-size: 0.8em;
+    padding-top: 0.12em;
+}
+table.dataTable thead th.sorting_asc:after {
+    content: "\f0de";
+}
+table.dataTable thead th.sorting_desc:after {
+    content: "\f0dd";
+}

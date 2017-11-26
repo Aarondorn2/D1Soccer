@@ -1,2 +1,8 @@
-test
-{{outlet}}
+{{#partial/content-container theme="dark"}}
+  {{table/edit-table
+    model=model
+    title="Player Management"
+    tableId="playerManagementTable"
+    modelStructure=modelStructure
+    modelDefaults=modelDefaults}}
+{{/partial/content-container}}

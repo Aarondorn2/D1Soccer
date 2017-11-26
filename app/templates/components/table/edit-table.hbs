@@ -1,0 +1,84 @@
+<div class="panel-group">
+
+  <div class="panel panel-default edit-table-panel">
+    <div class="panel-heading">
+      <h4 style="display:inline;">{{title}} <small> Click on a Row to Edit</small></h4>
+      <button class="btn btn-success btn-sm pull-right" {{action 'addItem'}}>Add a New Record</button>
+      <div class="clearfix" />
+    </div>
+    <div class="panel-body">
+      <table id={{tableId}}
+            class="table table-striped table-hover"
+            cellspacing="0"
+            width="100%"
+      >
+        <thead>
+          <tr class="bg-dark">
+            {{#each modelStructure as |structure|}}
+              <th>
+                {{structure.displayName}}
+              </th>
+            {{/each}}
+
+              {{!-- delete column --}}
+              <th />
+          </tr>
+
+        </thead>
+        <tbody>
+          {{#if model.isUpdating}}
+            <td colspan="{{add modelStructure.length 1}}" class="center-container">
+              {{fa-icon "spinner" spin=true size=3}}
+            </td>
+          {{else}}
+            {{#each model as |item|}}
+
+              {{#if item.isEditing}}
+                <tr id={{item.id}}>
+                  {{#each modelStructure as |structure|}}
+                    <td width={{structure.columnWidth}} data-sort={{get item structure.propertyName}}>
+                      {{!-- using custom format helper to format the value given a value, type, and format
+                      pulling the value dynamically from each item using the defined property name --}}
+                      {{form/bootstrap-input class="edit-table-input" type=structure.propertyType value=(get item structure.propertyName) mask=structure.propertyMask maskedValue=(if structure.propertyType "date")}}
+
+                    </td>
+                  {{/each}}
+
+                  {{!-- delete column --}}
+                  <td />
+                </tr>
+                <tr>
+                    <td colspan="{{add modelStructure.length 1}}">
+                      <div class="pull-right">
+                        <button class="btn btn-success btn-sm" {{action 'saveItem' item}}>Save</button>
+                        <button class="btn btn-danger btn-sm" {{action 'cancelEditItem' item}}>Cancel</button>
+                      </div>
+                    </td>
+                </tr>
+
+              {{else}} {{!-- not editing --}}
+                <tr id={{item.id}} {{action "editItem" item}}>
+                  {{#each modelStructure as |structure|}}
+                    <td width={{structure.columnWidth}} data-sort={{get item structure.propertyName}}>
+                      {{!-- using custom format helper to format the value given a value, type, and format
+                      pulling the value dynamically from each item using the defined property name --}}
+                      {{edit-table-format (get item structure.propertyName) structure.propertyType structure.propertyFormat}}
+                    </td>
+                  {{/each}}
+
+                    {{!-- delete column --}}
+                    <td>
+                      <span {{action "deleteItem" item bubbles=false}}>{{fa-icon "times" fixedWidth=true class="text-danger fa-delete"}}</span>
+                    </td>
+                </tr>
+              {{/if}}
+            {{/each}}
+          {{/if}}
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+      </table>
+  </div>
+  </div>
+</div>

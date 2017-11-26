@@ -28,6 +28,15 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
+  //default datatable w/ bootstrap UI
+  app.import('node_modules/datatables.net/js/jquery.dataTables.js');
+  app.import('node_modules/datatables.net-bs/js/dataTables.bootstrap.js');
+  app.import('node_modules/datatables.net-bs/css/dataTables.bootstrap.css');
+
+  // //datatable responsive
+  // app.import('node_modules/datatables.net-responsive/js/dataTables.responsive.min.js');
+  // app.import('node_modules/datatables.net-responsive-bs/js/responsive.bootstrap.min.js');
+  // app.import('node_modules/datatables.net-responsive-bs/css/responsive.bootstrap.min.css');
 
   return app.toTree();
 };
