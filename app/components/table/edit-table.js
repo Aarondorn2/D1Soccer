@@ -104,13 +104,19 @@ export default Ember.Component.extend({
   //LIFECYCLE HOOKS
   didRender() {
     this._super(...arguments);
-    //wait until model is done updating before initializing datatable
+    //wait until model is done updating before initializing
     if (!this.get('model').isUpdating && !this.get('dataTable')) {
         this.set('dataTable', Ember.$('#' + this.get("tableId")).DataTable({
           columnDefs: [
              { orderable: false, targets: -1 } //remove sorting from last (delete) column
-          ]
+          ],
+          "order": this.get('sortOrder'),
+          "fnDrawCallback": () => {
+              //yay tooltips
+              Ember.$('[data-toggle="tooltip"]').tooltip();
+          }
         }));
+
     }
 
   },
@@ -130,7 +136,7 @@ export default Ember.Component.extend({
 
       this.set('hasSiblingDataTableAddID', false);
       this.set('dataTableAddID', "");
-      dataTable.draw();
+      dataTable.draw(false);
     }
   }
 });

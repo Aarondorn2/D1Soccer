@@ -34,13 +34,12 @@
           </div>
           <div class="col-md-2">
             {{#form/bootstrap-input type="select" value=shirtSize label="Shirt Size" tag="input-shirtSize"}}
-                <option>None</option>
-                <option>S</option>
-                <option>M</option>
-                <option>L</option>
-                <option>XL</option>
-                <option>XXL</option>
-                <option>XXL</option>
+                {{form/bootstrap-select-option optionValue="None" selectValue=shirtSize}}
+                {{form/bootstrap-select-option optionValue="S" selectValue=shirtSize}}
+                {{form/bootstrap-select-option optionValue="M" selectValue=shirtSize}}
+                {{form/bootstrap-select-option optionValue="L" selectValue=shirtSize}}
+                {{form/bootstrap-select-option optionValue="XL" selectValue=shirtSize}}
+                {{form/bootstrap-select-option optionValue="XXL" selectValue=shirtSize}}
             {{/form/bootstrap-input}}
           </div>
         </div>

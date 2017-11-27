@@ -37,9 +37,17 @@
                 <tr id={{item.id}}>
                   {{#each modelStructure as |structure|}}
                     <td width={{structure.columnWidth}} data-sort={{get item structure.propertyName}}>
-                      {{!-- using custom format helper to format the value given a value, type, and format
-                      pulling the value dynamically from each item using the defined property name --}}
-                      {{form/bootstrap-input class="edit-table-input" type=structure.propertyType value=(get item structure.propertyName) mask=structure.propertyMask maskedValue=(if structure.propertyType "date")}}
+
+                      {{!-- using bootstrap-input component to help dynamically build/style everything (including masking) --}}
+                      {{#if (eq structure.propertyType "select")}}
+                        {{#form/bootstrap-input type="select" value=(get item structure.propertyName)}}
+                          {{#each structure.selectItems as |option|}}
+                              {{form/bootstrap-select-option optionValue=option selectValue=(get item structure.propertyName)}}
+                          {{/each}}
+                        {{/form/bootstrap-input}}
+                      {{else}}
+                        {{form/bootstrap-input class="edit-table-input" type=structure.propertyType value=(get item structure.propertyName) mask=structure.propertyMask maskedValue=(if structure.propertyType "date")}}
+                      {{/if}}
 
                     </td>
                   {{/each}}
@@ -62,7 +70,9 @@
                     <td width={{structure.columnWidth}} data-sort={{get item structure.propertyName}}>
                       {{!-- using custom format helper to format the value given a value, type, and format
                       pulling the value dynamically from each item using the defined property name --}}
-                      {{edit-table-format (get item structure.propertyName) structure.propertyType structure.propertyFormat}}
+                      <span data-toggle="tooltip" title={{edit-table-format (get item structure.propertyName) structure.propertyType structure.propertyFormat}}>
+                        {{edit-table-format (get item structure.propertyName) structure.propertyType structure.propertyFormat}}
+                      </span>
                     </td>
                   {{/each}}
 

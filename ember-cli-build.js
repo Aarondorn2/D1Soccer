@@ -28,6 +28,7 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
+
   //default datatable w/ bootstrap UI
   app.import('node_modules/datatables.net/js/jquery.dataTables.js');
   app.import('node_modules/datatables.net-bs/js/dataTables.bootstrap.js');

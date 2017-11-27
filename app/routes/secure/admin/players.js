@@ -20,7 +20,10 @@ export default Route.extend({
     {
       "propertyName": "userType",
       "displayName": "User Type",
-      "propertyType": "text"
+      "propertyType": "select",
+      "selectItems": [
+        "player", "captain", "admin"
+      ]
     },
     {
       "propertyName": "dob",
@@ -32,13 +35,16 @@ export default Route.extend({
     {
       "propertyName": "shirtSize",
       "displayName": "Shirt",
-      "propertyType": "text"
+      "propertyType": "select",
+      "selectItems": [
+        "None", "S", "M", "L", "XL", "XXL"
+      ]
     },
     {
       "propertyName": "phone",
       "displayName": "Phone",
       "propertyType": "text",
-      // "propertyFormat": "ll", TODO
+      "propertyFormat": "custom::(%%%) %%%-%%%%",
       "propertyMask": "(999) 999-9999"
     },
     {
@@ -49,8 +55,8 @@ export default Route.extend({
     {
       "propertyName": "emergencyContactPhone",
       "displayName": "Emerg. Phone",
-      "propertyType": "number",
-      "propertyFormat": "(000) 000-0000", 
+      "propertyType": "text",
+      "propertyFormat": "custom::(%%%) %%%-%%%%",
       "propertyMask": "(999) 999-9999"
     }
   ],
@@ -61,6 +67,8 @@ export default Route.extend({
       "propertyValue": new Date()
     },
   ],
+  sortOrder: [[ 0, "asc" ],[1, "asc"]],
+
   model() {
     return this.store.findAll('user');
   },
@@ -68,6 +76,7 @@ export default Route.extend({
     this._super(controller, model);
     controller.set('modelStructure', this.get('modelStructure'));
     controller.set('modelDefaults', this.get('modelDefaults'));
+    controller.set('sortOrder', this.get('sortOrder'));
   }
 
 
