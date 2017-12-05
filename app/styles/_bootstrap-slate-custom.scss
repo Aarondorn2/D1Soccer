@@ -1,0 +1,34 @@
+// using this file to override styles from imported slate theme when needed
+// https://www.npmjs.com/package/ember-models-table
+
+//fix mainnav dropdown (don't want this one dark)
+#mainnav .dropdown-menu {
+  background-color: #dbdbdb;
+  border-radius: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border: 0;
+
+}
+#mainnav .dropdown-menu li a {
+  color: #333a3b;
+  line-height: 1.42857;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 5px 20px;
+}
+#mainnav .dropdown-menu li a:hover {
+    color: #ffffff;
+    text-shadow: -1px -1px #9e1126;
+    background-color: #e51937;
+}
+
+//fix menu hamburger on small screens
+#header-bottom .navbar-toggle {
+  float: right;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #5a5a5a;
+  font-size: 16px;
+}
