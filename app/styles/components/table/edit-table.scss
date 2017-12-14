@@ -1,0 +1,86 @@
+//table style
+.edit-table-panel .panel-body {
+  background-color: #1a1e1f;
+}
+
+//delete buttons
+.edit-table-panel .fa-delete {
+  font-size: medium;
+
+}
+.edit-table-panel .fa-delete:hover {
+  font-size: medium;
+  color: #a94442;
+}
+
+//table editing style
+.edit-table-panel .edit-table-input .form-control { //gotta be really specific to override. :)
+  width: 100%;
+}
+.edit-table-panel .edit-table-input .form-control:focus {
+  width: auto;
+}
+
+//not gunna be pretty on smaller screens... do admin work on desktop! :P
+.dataTables_wrapper .col-sm-12 {
+    max-width: calc(100vw - 340px);
+    overflow-x: auto;
+}
+@media (max-width: 768px) {
+  .dataTables_wrapper .col-sm-12 {
+      max-width: calc(100vw - 136px); //collapsed sidebar
+  }
+}
+
+//tooltips
+.dataTable .tooltip-inner {
+  //same as btn-info
+  background-image: -webkit-linear-gradient(#74cae3, #5bc0de 60%, #4ab9db);
+  background-image: -o-linear-gradient(#74cae3, #5bc0de 60%, #4ab9db);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#74cae3), color-stop(60%, #5bc0de), to(#4ab9db));
+  background-image: linear-gradient(#74cae3, #5bc0de 60%, #4ab9db);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff74cae3', endColorstr='#ff4ab9db', GradientType=0);
+  -webkit-filter: none;
+  filter: none;
+  border-color: rgba(0,0,0,0.6);
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+  color: #ffffff;
+  background-color: #5bc0de;
+  font-size: 14px;
+  font-weight: normal;
+}
+.dataTable .tooltip.in {
+  opacity: 1 ;
+}
+.dataTable .tooltip.top .tooltip-arrow {
+  border-top-color: #5bc0de;
+}
+
+//override sort icons (use FontAwesome)
+table.dataTable thead th {
+    position: relative;
+    background-image: none !important;
+}
+
+table.dataTable thead th.sorting:after,
+table.dataTable thead th.sorting_asc:after,
+table.dataTable thead th.sorting_desc:after {
+    position: absolute;
+    top: 12px;
+    right: 8px;
+    display: block;
+    font-family: FontAwesome;
+}
+table.dataTable thead th.sorting:after {
+    content: "\f0dc";
+    color: #ddd;
+    font-size: 0.8em;
+    padding-top: 0.12em;
+}
+table.dataTable thead th.sorting_asc:after {
+    content: "\f0de";
+}
+table.dataTable thead th.sorting_desc:after {
+    content: "\f0dd";
+}

@@ -1,6 +1,6 @@
 
 {{#if isPasswordReset}}
-  {{auth/password-reset-panel resetEmail=resetEmail isInvalidCode=isInvalidCode isUnknownError=isUnknownError}}
+  {{auth/password-reset-panel}}
 {{else}}
   <div style="text-align:center;">
     <a {{action "showSignin"}} href="#" ><h4>Please Log In to Continue</h4></a>

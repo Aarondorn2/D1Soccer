@@ -2,7 +2,7 @@
 
 ## Backlog
 
-* password reset
+* ~~password reset~~
 * test registration, email verification, password reset on mobile
 * dashboard
   * update profile

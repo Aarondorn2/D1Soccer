@@ -7,28 +7,43 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('auth', function() {
-    this.route('login');
-    this.route('register');
-    this.route('verify-email');
-  });
   this.route('league', function() {
     this.route('information');
     this.route('news');
     this.route('schedule');
     this.route('standings');
   });
-  this.authenticatedRoute('secure', function() {
-    this.route('dashboard');
-    this.route('admin', function() {
-      this.route('announcement');
-      this.route('event');
-    });
-  });
   this.route('album');
   this.route('contact');
 
+  this.route('auth', function() {
+    this.route('login');
+    this.route('register');
+    this.route('verify-email');
+  });
 
+  this.authenticatedRoute('secure', function() {
+    this.route('dashboard');
+    this.route('profile');
+
+    this.route('player', function() {
+      this.route('register');
+      this.route('join-team');
+    });
+
+    this.route('captain', function() {
+      this.route('preferences');
+      this.route('roster');
+    });
+
+    this.route('admin', function() {
+      this.route('standings');
+      this.route('schedule');
+      this.route('announcements');
+      this.route('players');
+      this.route('season-management');
+    });
+  });
 });
 
 export default Router;

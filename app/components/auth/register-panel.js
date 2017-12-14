@@ -86,10 +86,11 @@ export default Ember.Component.extend({
                 firstName: this.get('firstName'),
                 lastName: this.get('lastName'),
                 dob: new Date(this.get('dob')),
-                phone: this.get('phone'),
                 shirtSize: this.get('shirtSize'),
+                phone: this.get('phone'),
                 emergencyContact: this.get('emergencyContact'),
                 emergencyContactPhone: this.get('emergencyContactPhone'),
+                userType: "player",
                 email: email
               });
 

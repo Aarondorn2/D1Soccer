@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 
 export default DS.Model.extend({
   firstName: DS.attr('string'),
@@ -9,5 +10,17 @@ export default DS.Model.extend({
   emergencyContact: DS.attr('string'),
   emergencyContactPhone: DS.attr('string'),
   userType: DS.attr('string'),
-  email: DS.attr('string')
+  email: DS.attr('string'),
+
+  isAllowedPlayer: Ember.computed('userType', function() {
+    let userType = this.get('userType');
+    return userType === 'player' || userType === 'captain' || userType === 'admin';
+  }),
+  isAllowedCaptain: Ember.computed('userType', function() {
+    let userType = this.get('userType');
+    return userType === 'captain' || userType === 'admin';
+  }),
+  isAllowedAdmin: Ember.computed('userType', function() {
+    return this.get('userType') === 'admin';
+  })
 });

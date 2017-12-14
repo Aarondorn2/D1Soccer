@@ -1,4 +1,5 @@
 @import "bootstrap-custom";
+@import "bootstrap-slate-custom";
 @import "font-awesome";
 @import 'd1site';
 @import 'components/contact-card';
@@ -6,9 +7,14 @@
 @import 'components/auth/register-panel';
 @import 'components/auth/login-modal';
 @import 'components/auth/verify-email-panel';
+@import 'components/auth/password-reset-panel';
 @import 'components/form/validation-tip';
 @import 'components/form/bootstrap-input';
 @import 'components/menu/nav-scrollspy';
+@import 'components/menu/nav-sidebar';
+@import 'components/page/home-page';
+@import 'components/partial/google-embed';
+@import 'components/table/edit-table';
 
 html, body {
     max-width: 100%;
@@ -18,7 +24,7 @@ body {
   background-color: transparent; //clear styling from other CSS files
 }
 .main-bg {
-  background: url('/assets/images/bg-soccer.jpg') no-repeat center center fixed;
+  background: url('/assets/images/d1field.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -32,11 +38,11 @@ body {
   background-size: cover;
 }
 .dark-bg {
-  background: url('/assets/images/bg-blackpaper.png') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background: #000 url('/assets/images/bg-blackpaper.png') repeat scroll 0 0;
+  -webkit-background-size: auto;
+  -moz-background-size: auto;
+  -o-background-size: auto;
+  background-size: auto;
 }
 .content-container {
   padding: 40px 30px 30px 30px;
@@ -44,10 +50,6 @@ body {
 }
 .jumbotron {
   text-align: center;
-}
-.subheader {
-    text-align: center;
-    margin-top: 8%;
 }
 
 .ember-cli-g-map {
@@ -70,4 +72,47 @@ body {
 
 .show {
   display: block;
+}
+
+.secure-wrapper {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+}
+
+.center-container {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+}
+
+.shadow {
+  background: url('/assets/images/shadow.png') left bottom no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+  padding-bottom: 40px;
+  margin: 0 auto;
+}
+
+.shadow-top {
+    -webkit-transform:rotate(180deg);
+    -moz-transform:rotate(180deg);
+    -o-transform:rotate(180deg);
+    -ms-transform:rotate(180deg);
+    transform:rotate(180deg);
+}
+
+
+@media (max-width: 768px) {
+  .shadow {
+    padding-bottom: 20px;
+  }
+}
+@media (max-width : 480px) {
+  .shadow {
+    padding-bottom: 10px;
+  }
 }
