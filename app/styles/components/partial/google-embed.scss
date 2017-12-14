@@ -3,10 +3,33 @@
   display:  none;
 }
 
-.grid-container {
+#sheets-viewport .grid-container {
   background: transparent;
+  border: black 1px solid;
 }
 
+#sheets-viewport .grid-container table {
+  margin-top:2%;
+  margin-bottom:2%;
+}
+
+#sheets-viewport .grid-container td{
+  background: transparent;
+}
+// #sheets-viewport .ritz .waffle .s6 {
+//   border-right: inherit;
+// }
 .grid-container table {
   margin:auto;
+}
+
+@media (max-width: 768px) {
+
+  #sheets-viewport .grid-container {
+    border: none;
+  }
+
+  #sheets-viewport .grid-container table {
+    border: black 1px solid;
+  }
 }
