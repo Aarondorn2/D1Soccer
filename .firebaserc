@@ -2,6 +2,7 @@
   "projects": {
     "default": "d1soccer-dev",
     "stg": "d1soccer-stg",
-    "dev": "d1soccer-dev"
+    "dev": "d1soccer-dev",
+    "prod": "d1soccer-prod"
   }
 }

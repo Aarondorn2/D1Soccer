@@ -21,9 +21,13 @@ export default Ember.Component.extend({
           user.sendEmailVerification()
             .then(function() {
               this.set('isSendSuccess', true);
+              this.set('isUnknownError', false);
+              this.set('isInvalidCode', false);
             }.bind(this))
             .catch(function(error) {
               this.set('isUnknownError', true);
+              this.set('isSendSuccess', false);
+              this.set('isInvalidCode', false);
               Logger.error(error);
             }.bind(this));
         }

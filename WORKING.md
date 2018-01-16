@@ -27,3 +27,7 @@
 ## Errors / Bug Fixes
 
 * ~~login modal on mobile device doesn't let you click on anything~~
+* Can't create email/pass account if created social media account first
+* Can't set password when creating account from admin control
+* Need calendar control for date inputs
+* login submit on enter
