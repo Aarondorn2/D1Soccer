@@ -68,9 +68,9 @@
               Season Fees
             </div>
             <div class="panel-body">
-              {{#if false}}
+              {{#if userSeason.hasPaid}}
                 <p>
-                  You've already signed the liability waiver!  You can still review the waiver below.
+                  You've competed payment!
                 </p>
               {{else}}
                 <p>
@@ -79,13 +79,15 @@
                   You are eligible to play as long as you've paid in MindBody.
                 </p>
                 <p>
-                  <a href=""><b>Instructions for using MindBody</b></a>
+                  <a href="/assets/docs/MindBody.pdf" target="_blank"><b>Instructions for using MindBody</b></a>
                 </p>
               {{/if}}
             </div>
 
             <div class="panel-footer">
-              <button type="button" class="btn btn-warning" {{action "sendToMindBody"}}> Go to MindBody </button>
+              {{#if (not userSeason.hasPaid)}}
+                <button type="button" class="btn btn-warning" {{action "sendToMindBody"}}> Go to MindBody </button>
+              {{/if}}
             </div>
           </div>
 
@@ -115,11 +117,7 @@
               {{{contract.contractText}}}
             </div>
 
-            {{#if (not userSeason.hasWaiver)}}
-              By clicking 'Accept', you are agreeing to the above terms and releasing D1 Sports of any and all liability in consideration of allowed participation in the D1 Adult Soccer progam.
-            {{else}}
-              You have already agreed to the above terms and released D1 Sports of any and all liability in consideration of allowed participation in the D1 Adult Soccer progam.
-            {{/if}}
+            <b>You certify that you have read the forgoing and understand that by accepting below, are giving up certain legal rights and remedies and intend that your acceptance be a complete and unconditional release of all liability on behalf of D1 and the Releasees to the greatest extent.</b>
             <hr />
 
             <div class="pull-right">
@@ -129,11 +127,9 @@
               {{else}}
                 <button type="button" class="btn btn-danger" data-dismiss="modal"> Close </button>
               {{/if}}
-
             </div>
 
             <div class="clearfix" />
-
 
           </div> {{!-- <div class="modal-body login-modal-body"> --}}
 
@@ -142,8 +138,6 @@
       </div>
     </div>
   </div>
-
-
 
   <div class="panel-footer" />
 </div>

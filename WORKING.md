@@ -6,9 +6,9 @@
 * test registration, email verification, password reset on mobile
 * dashboard
   * update profile
-  * register for season
-  * sign ewaiver
-  * pay for season
+  * ~~register for season~~
+  * ~~sign ewaiver~~
+  * ~~pay for season~~
   * join a team
   * history / stats
 * UX/UI
@@ -17,10 +17,13 @@
   * email notifications?
   * text notifications?
 * standings
+* about
+  * add information about league (just rules atm)
 * news/announcements
 * help page
   * suggestions
   * issues
+  * FAQ
 * terms / policy pages
 
 

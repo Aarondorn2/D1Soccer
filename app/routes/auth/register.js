@@ -3,27 +3,20 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 
   model() {
-    let session = this.get('session');
+    let uid = this.get('session').get('uid');
 
-    if(!session.userId) { //if there is no user obect associated with session, go fetch it
-      let currentUser = session.get('currentUser');
-      let userEmail = "notfound@notfound.notfound";
-
-      if(currentUser) { //may not have a session - currentUser may not be defined
-        userEmail = currentUser.providerData[0].email;
-      }
-      return this.store.query('user', { orderBy: 'email', equalTo: userEmail });
+    if(!uid) {
+      uid = "noSoupForYou"; //if no uid, set to something that won't be found
     }
+
+    return this.store.findRecord('user', uid).catch(() => {
+      // no worries, handling in afterModel()
+    });
   },
+
   afterModel(model) {
-    let session = this.get('session');
-
-    if(!session.userId) {
-      if (model.content.length != 0) { //has an account already!
-        session.userId = model.get("firstObject").id; //just use first record, shouldn't find multiple anyway
-
-        this.transitionTo('secure.dashboard'); //try to send them to dashbord.  If not authenticated, will send to home page
-      }
+    if (model) { //has an account already!
+      this.transitionTo('secure.dashboard'); //try to send them to dashbord.  If not authenticated, will send to home page
     }
   }
 });

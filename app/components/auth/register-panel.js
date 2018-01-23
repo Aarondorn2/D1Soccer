@@ -101,10 +101,12 @@ export default Ember.Component.extend({
               this.get('email'),
               this.get('password')
           ).then(
-            ()=>{
+            () => {
               //update session
               session.fetch()
                 .then(() => {
+                    //set user id
+                    user.set('id', session.get('uid'));
                     //save user
                     user.save().then(() => {
                       //send verification email

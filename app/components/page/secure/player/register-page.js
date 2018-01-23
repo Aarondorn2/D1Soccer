@@ -81,6 +81,7 @@ export default Ember.Component.extend({
                   userSeason: userSeason,
                   contract: contract,
                   acceptedName: this.get('user').get('fullName'),
+                  acceptedEmail: this.get('user').get('email'),
                   acceptedIPAddress: response.ip,
                   hasAccepted: true,
                   acceptedDate: new Date(),
