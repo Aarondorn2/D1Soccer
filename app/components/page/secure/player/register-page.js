@@ -11,9 +11,10 @@ export default Ember.Component.extend({
 
 
   init() {
-    this.set('contract', this.get('contracts').get('firstObject'));
-
     this._super(...arguments);
+    this.set('contract', this.get('contracts').get('firstObject'));
+    this.set('user', this.get('users').get('firstObject'));
+
     let seasons = this.get('seasons');
     let today = new Date();
 

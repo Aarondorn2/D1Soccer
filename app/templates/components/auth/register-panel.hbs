@@ -17,6 +17,7 @@
       {{alert-message display=isUnknownError }}
 
       <div class="col-md-12">
+
         <div class="row registration-input-row">
           <div class="col-md-6">
             {{form/bootstrap-input type="text" value=firstName label="First Name" tag="input-firstName" required="true"}}
@@ -25,6 +26,7 @@
             {{form/bootstrap-input type="text" value=lastName label="Last Name" tag="input-lastName" required="true"}}
           </div>
         </div>
+
         <div class="row registration-input-row">
           <div class="col-md-5">
             {{form/bootstrap-input type="text" mask="99/99/9999" value=dob label="Date of Birth" tag="input-dob" required="true" maskedValue="true"}}
@@ -43,6 +45,29 @@
             {{/form/bootstrap-input}}
           </div>
         </div>
+
+        <div class="row registration-input-row">
+          <div class="col-md-3">
+            {{#form/bootstrap-input type="select" value=gender label="Gender" tag="input-gender"}}
+                {{form/bootstrap-select-option optionValue="Not Specified" selectValue=gender}}
+                {{form/bootstrap-select-option optionValue="Female" selectValue=gender}}
+                {{form/bootstrap-select-option optionValue="Male" selectValue=gender}}
+            {{/form/bootstrap-input}}
+          </div>
+          <div class="col-md-9">
+            <div class="control-group">
+                <div class="controls">
+                  <label>
+                    <span>Preferred Positions:</span>
+                    {{form/bootstrap-input type="checkbox" value=isOffense label="Offense" tag="input-offense" class="checkbox-inline"}}
+                    {{form/bootstrap-input type="checkbox" value=isDefense label="Defense" tag="input-defense" class="checkbox-inline"}}
+                    {{form/bootstrap-input type="checkbox" value=isKeeper label="Keeper" tag="input-keeper" class="checkbox-inline"}}
+                  </label>
+                </div>
+            </div>
+          </div>
+        </div>
+
         <div class="row registration-input-row">
           <div class="col-md-6">
             {{form/bootstrap-input type="text" value=emergencyContact label="Emergency Contact Name" tag="input-emergency-contact" required="true"}}
@@ -51,6 +76,7 @@
             {{form/bootstrap-input type="text" mask="(999) 999-9999" value=emergencyContactPhone label="Emergency Contact Phone Number" tag="input-emergency-contact-phone" required="true"}}
           </div>
         </div>
+
       </div>
     </div>
 

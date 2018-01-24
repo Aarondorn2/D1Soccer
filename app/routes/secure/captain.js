@@ -3,11 +3,11 @@ import Ember from 'ember';
 //make sure they're allowed to use this route
 export default Ember.Route.extend({
   model() {
-    return this.store.peekRecord('user', this.get('session').get('uid'));
+    return this.store.peekRecord('user-link', this.get('session').get('uid'));
   },
 
   afterModel(model) {
-    if(!model.isAllowedCaptain) {
+    if(!model.get('user').get('isAllowedCaptain')) {
       this.transitionTo('secure.dashboard');
     }
   }

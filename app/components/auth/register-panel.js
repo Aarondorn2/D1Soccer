@@ -1,7 +1,7 @@
 import Ember from 'ember';
 const {Logger} = Ember;
 
-//TODO add fields for gender and preferred position. switch to model injection via route? Move validation to model?
+//TODO Switch to model injection via route? Move validation to model?
 export default Ember.Component.extend({
   firebaseApp: Ember.inject.service(),
   router: Ember.inject.service(),
@@ -14,6 +14,10 @@ export default Ember.Component.extend({
   dob: "",
   phone: "",
   shirtSize: "None",
+  gender: "Not Specified",
+  isKeeper: false,
+  isOffense: false,
+  isDefense: false,
   emergencyContact: "",
   emergencyContactPhone: "",
 
@@ -82,10 +86,15 @@ export default Ember.Component.extend({
         }
 
         //create user
+        let userLink = this.get('store').createRecord('user-link');
         let user = this.get('store').createRecord('user', {
                 firstName: this.get('firstName'),
                 lastName: this.get('lastName'),
                 dob: new Date(this.get('dob')),
+                gender: this.get('gender'),
+                isKeeper: this.get('isKeeper'),
+                isOffense: this.get('isOffense'),
+                isDefense: this.get('isDefense'),
                 shirtSize: this.get('shirtSize'),
                 phone: this.get('phone'),
                 emergencyContact: this.get('emergencyContact'),
@@ -105,22 +114,26 @@ export default Ember.Component.extend({
               //update session
               session.fetch()
                 .then(() => {
-                    //set user id
-                    user.set('id', session.get('uid'));
-                    //save user
-                    user.save().then(() => {
-                      //send verification email
-                      let fUser = this.get('firebaseApp').auth().currentUser;
-                      fUser.sendEmailVerification()
-                        .then(function() {
-                          //transition
-                          this.get('router').transitionTo('secure.dashboard');
-                        }.bind(this))
-                        .catch(function(error) {
-                          //log and continue - they can resend...
-                          Logger.error(error);
-                          this.get('router').transitionTo('secure.dashboard');
-                        });
+                    //set userLink
+                    userLink.set('id', session.get('uid'));
+                    userLink.set('provider', 'password');
+                    userLink.set('user', user);
+                    //save user & link
+                    userLink.save().then(() => {
+                      user.save().then(() => {
+                        //send verification email
+                        let fUser = this.get('firebaseApp').auth().currentUser;
+                        fUser.sendEmailVerification()
+                          .then(function() {
+                            //transition
+                            this.get('router').transitionTo('secure.dashboard');
+                          }.bind(this))
+                          .catch(function(error) {
+                            //log and continue - they can resend...
+                            Logger.error(error);
+                            this.get('router').transitionTo('secure.dashboard');
+                          });
+                      });
                     });
                 })
                 .catch((error) => {
@@ -141,14 +154,22 @@ export default Ember.Component.extend({
               window.scrollTo(0,0);
           });
         } else { //already authenticated, just need to create user and add to session
-            user.save().then(() => {
-              //transition
-              this.get('router').transitionTo('secure.dashboard');
+            //set userLink
+            userLink.set('id', session.get('uid'));
+            userLink.set('provider', session.get('provider'));
+            userLink.set('user', user);
+            //save user & link
+            userLink.save().then(() => {
+              user.save().then(() => {
+                //transition
+                this.get('router').transitionTo('secure.dashboard');
+              });
             });
         }
 
       } // createUser()
   },
+
   init() {
     this._super(...arguments);
 

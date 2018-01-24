@@ -9,13 +9,13 @@ export default Ember.Route.extend({
       uid = "noSoupForYou"; //if no uid, set to something that won't be found
     }
 
-    return this.store.findRecord('user', uid).catch(() => {
+    return this.store.findRecord('user-link', uid).catch(() => {
       // no worries, handling in afterModel()
     });
   },
 
   afterModel(model) {
-    if (model) { //has an account already!
+    if (model && model.get('user')) { //has an account already!
       this.transitionTo('secure.dashboard'); //try to send them to dashbord.  If not authenticated, will send to home page
     }
   }

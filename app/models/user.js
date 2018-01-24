@@ -2,10 +2,15 @@ import DS from 'ember-data';
 import Ember from 'ember';
 
 export default DS.Model.extend({
+  userLinks: DS.hasMany('user-link'),
   firstName: DS.attr('string'),
   lastName: DS.attr('string'),
   dob: DS.attr('date'),
   shirtSize: DS.attr('string'),
+  gender: DS.attr('string'),
+  isKeeper: DS.attr('boolean'),
+  isOffense: DS.attr('boolean'),
+  isDefense: DS.attr('boolean'),
   phone: DS.attr('string'),
   emergencyContact: DS.attr('string'),
   emergencyContactPhone: DS.attr('string'),
