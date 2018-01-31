@@ -105,6 +105,10 @@ module.exports = function(environment) {
       storageBucket: 'd1soccer-prod.appspot.com',
       messagingSenderId: '124721056854'
     };
+    ENV.API = {
+      host: 'http://api.D1ChattSoccer.com',
+      namespace: 'app.php'
+    };
   }
 
   return ENV;
