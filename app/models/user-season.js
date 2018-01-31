@@ -1,8 +1,8 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  user: DS.belongsTo('user'),
-  waiver: DS.belongsTo('waiver'),
+  userId: DS.attr('number'),
+  waiverId: DS.attr('number'),
   seasonId: DS.attr('string'),
   paymentId: DS.attr('string'),
   teamId: DS.attr('string'),

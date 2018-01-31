@@ -50,14 +50,17 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
-
-        //point to -dev project
+      //point to -dev project
       ENV.firebase = {
         apiKey: 'AIzaSyBqOgivaTAgl8NfjKFfujNlkUnpCuHd5bI',
         authDomain: 'd1soccer-dev.firebaseapp.com',
         databaseURL: 'https://d1soccer-dev.firebaseio.com',
         storageBucket: 'd1soccer-dev.appspot.com',
         messagingSenderId: '650769926530'
+      };
+      ENV.API = {
+        host: 'http://localhost3',
+        namespace: 'app_dev.php'
       };
   }
 
@@ -82,6 +85,10 @@ module.exports = function(environment) {
       projectId: "d1soccer-stg",
       storageBucket: "d1soccer-stg.appspot.com",
       messagingSenderId: "299942619453"
+    };
+    ENV.API = {
+      host: 'http://localhost3',
+      namespace: 'app.php'
     };
   }
 

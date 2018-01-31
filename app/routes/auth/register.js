@@ -3,19 +3,14 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 
   model() {
-    let uid = this.get('session').get('uid');
-
-    if(!uid) {
-      uid = "noSoupForYou"; //if no uid, set to something that won't be found
+    if(this.get('session.isAuthenticated')) { //if authenticated, check to see if user is set up
+        let qEmail = this.get('session').get('currentUser').providerData[0].email;
+        return this.store.query('user', { orderBy: 'email', equalTo: qEmail });
     }
-
-    return this.store.findRecord('user-link', uid).catch(() => {
-      // no worries, handling in afterModel()
-    });
   },
 
   afterModel(model) {
-    if (model && model.get('user')) { //has an account already!
+    if (model && model.content.length > 0) { //has an account already!
       this.transitionTo('secure.dashboard'); //try to send them to dashbord.  If not authenticated, will send to home page
     }
   }

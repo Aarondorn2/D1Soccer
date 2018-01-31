@@ -13,7 +13,6 @@ export default Ember.Component.extend({
   init() {
     this._super(...arguments);
     this.set('contract', this.get('contracts').get('firstObject'));
-    this.set('user', this.get('users').get('firstObject'));
 
     let seasons = this.get('seasons');
     let today = new Date();
@@ -24,37 +23,31 @@ export default Ember.Component.extend({
         this.set('currentSeason', season);
 
         //find user-season
-        this.get('user').get('seasons').then((userSeasons) => {
-
-          userSeasons.forEach((userSeason) => {
-            if(!this.get('userSeason') && this.get('currentSeason').id === userSeason.get('seasonId')) {
-              this.set('userSeason', userSeason);
-            }
-          });
-
-          //if nothing found, create one!
-          if (!this.get('userSeason')) {
-            let user = this.get('user');
-
-            let userSeason = this.get('store').createRecord('user-season', {
-                    user: user,
-                    seasonId: this.get('currentSeason').id,
-                    paymentId: '',
-                    teamId: '',
-                    hasPaid: false,
-                    hasWaiver: false,
-                    hasTeam: false,
-                    systemLoadDate: new Date(),
-                    systemUpdateDate: new Date()
-                  });
-            user.get('seasons').pushObject(userSeason);
-            user.save().then(() => {
-              userSeason.save();
-            });
-
-            this.set('userSeason', userSeason); //set to new model
+        this.get('userSeasons').forEach((userSeason) => {
+          if(!this.get('userSeason') && this.get('currentSeason').id === userSeason.get('seasonId')) {
+            this.set('userSeason', userSeason);
           }
         });
+
+        //if nothing found, create one!
+        if (!this.get('userSeason')) {
+          let user = this.get('user');
+
+          let userSeason = this.get('store').createRecord('user-season', {
+                  user: user,
+                  seasonId: this.get('currentSeason').id,
+                  paymentId: '',
+                  teamId: '',
+                  hasPaid: false,
+                  hasWaiver: false,
+                  hasTeam: false,
+                  systemLoadDate: new Date(),
+                  systemUpdateDate: new Date()
+                });
+          userSeason.save();
+
+          this.set('userSeason', userSeason); //set to new model
+        }
       }
     });
 
@@ -73,30 +66,23 @@ export default Ember.Component.extend({
 
     acceptLiabilityWaiver() {
       //build waiver obeject and persist
-      let contract = this.get('contract');
       let userSeason = this.get('userSeason');
 
       Ember.$.get("http://ipinfo.io", function(response) {
 
           let waiver = this.get('store').createRecord('waiver', {
-                  userSeason: userSeason,
-                  contract: contract,
-                  acceptedName: this.get('user').get('fullName'),
-                  acceptedEmail: this.get('user').get('email'),
+                  userSeasonId: userSeason.id,
+                  contractId: this.get('contract.id'),
+                  acceptedName: this.get('user.fullName'),
+                  acceptedEmail: this.get('user.email'),
                   acceptedIPAddress: response.ip,
                   hasAccepted: true,
                   acceptedDate: new Date(),
                   systemLoadDate: new Date()
                 });
 
-          userSeason.set('waiver', waiver);
-          userSeason.set('hasWaiver', true);
-          contract.get('waivers').pushObject(waiver);
-
-          userSeason.save().then(() => {
-            contract.save().then(() => {
-              waiver.save();
-            });
+          waiver.save().then((response) => { //will update relationships on back end.
+              userSeason.reload(); //get updated relationship
           });
 
       }.bind(this), "jsonp");

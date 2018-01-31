@@ -1,0 +1,138 @@
+
+<div class="panel panel-default panel-register-page">
+
+  <div class="panel-heading" >
+    <h4 style="display:inline-block;">
+      Team Selection
+    </h4>
+  </div> {{!-- <div class="panel-heading" > --}}
+
+  <div class="panel-body">
+    {{#alert-message display=(not isRegistrationOpen) type="danger"}}
+      Registration is currently closed.  Please check back next season!
+    {{/alert-message}}
+    {{#alert-message display=(and isRegistrationOpen (not (and userSeason.hasWaiver userSeason.hasPaid))) type="info"}}
+      Players must sign a waiver and pay for the season prior to playing.
+    {{/alert-message}}
+    {{#alert-message display=(and userSeason.hasWaiver userSeason.hasPaid)  type="success"}}
+      You're done!  You've completed registration.
+
+      {{#if (not userSeason.hasTeam)}}
+        <br /> <br />
+        Next, you should
+        {{#link-to 'secure.player.join-team'}}
+          <a href="#" target="_top">Join a Team</a>
+        {{/link-to}}
+      {{/if}}
+    {{/alert-message}}
+
+    {{#if isRegistrationOpen}}
+      <div class="row">
+
+        {{#if contract}}
+          <div class="col-md-6 register-page-segment">
+            <div class="panel {{if userSeason.hasWaiver 'panel-success' 'panel-danger'}}">
+              <div class="panel-heading">
+                {{contract.contractDisplayName}}
+              </div>
+              <div class="panel-body">
+                {{#if userSeason.hasWaiver}}
+                  <p>
+                    You've already signed the liability waiver!  You can still review the waiver below.
+                  </p>
+                {{else}}
+                  <p>
+                    Please use the button below to view and sign the liability waiver.
+                  </p>
+                {{/if}}
+              </div>
+              <div class="panel-footer">
+                {{#if (not userSeason.hasWaiver)}}
+                  <button type="button" class="btn btn-warning" {{action "showWaiver"}}> View and Sign the Liability Waiver </button>
+                {{else}}
+                  <button type="button" class="btn btn-success" {{action "showWaiver"}}> View Liability Waiver </button>
+                {{/if}}
+              </div>
+            </div>
+          </div>
+        {{/if}}
+
+        <div class="col-md-6 register-page-segment">
+          <div class="panel {{if userSeason.hasPaid 'panel-success' 'panel-danger'}}">
+            <div class="panel-heading">
+              Season Fees
+            </div>
+            <div class="panel-body">
+              {{#if userSeason.hasPaid}}
+                <p>
+                  You've competed payment!
+                </p>
+              {{else}}
+                <p>
+                  Click below to visit MindBody and pay for the season.
+                  Payments in MindBody may take several days to sync with this site.
+                  You are eligible to play as long as you've paid in MindBody.
+                </p>
+                <p>
+                  <a href="/assets/docs/MindBody.pdf" target="_blank"><b>Instructions for using MindBody</b></a>
+                </p>
+              {{/if}}
+            </div>
+
+            <div class="panel-footer">
+              {{#if (not userSeason.hasPaid)}}
+                <button type="button" class="btn btn-warning" {{action "sendToMindBody"}}> Go to MindBody </button>
+              {{/if}}
+            </div>
+          </div>
+
+        </div>
+
+      </div> {{!-- <div class="row"> --}}
+    {{/if}}
+
+  </div> {{!-- <div class="panel-body"> --}}
+
+
+
+  {{!-- Liability Waiver Modal --}}
+  <div id="liability-modal" class="modal fade" role="dialog">
+    <div class="vertical-alignment-helper">
+      <div class="modal-dialog vertical-align-center">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" id="waiver-modal-dismiss" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Liability Waiver</h4>
+          </div>
+          <div class="modal-body waiver-modal-body">
+
+            <div class="waiver-modal-content">
+              {{{contract.contractText}}}
+            </div>
+
+            <b>You certify that you have read the forgoing and understand that by accepting below, are giving up certain legal rights and remedies and intend that your acceptance be a complete and unconditional release of all liability on behalf of D1 and the Releasees to the greatest extent.</b>
+            <hr />
+
+            <div class="pull-right">
+              {{#if (not userSeason.hasWaiver)}}
+                <button type="button" class="btn btn-danger" style="margin-right: 15px;" data-dismiss="modal"> Decline </button>
+                <button type="button" class="btn btn-success" {{action "acceptLiabilityWaiver"}} data-dismiss="modal"> Accept </button>
+              {{else}}
+                <button type="button" class="btn btn-danger" data-dismiss="modal"> Close </button>
+              {{/if}}
+            </div>
+
+            <div class="clearfix" />
+
+          </div> {{!-- <div class="modal-body login-modal-body"> --}}
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-footer" />
+</div>

@@ -17,6 +17,6 @@ export default Ember.Component.extend({
     },
     init() {
       this._super(...arguments);
-      this.set('user', this.get('model').user.get('firstObject'));
+      this.set('user', this.get('model').get('firstObject'));
     }
 });

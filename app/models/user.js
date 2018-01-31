@@ -2,7 +2,6 @@ import DS from 'ember-data';
 import Ember from 'ember';
 
 export default DS.Model.extend({
-  userLinks: DS.hasMany('user-link'),
   firstName: DS.attr('string'),
   lastName: DS.attr('string'),
   dob: DS.attr('date'),
@@ -12,11 +11,10 @@ export default DS.Model.extend({
   isOffense: DS.attr('boolean'),
   isDefense: DS.attr('boolean'),
   phone: DS.attr('string'),
-  emergencyContact: DS.attr('string'),
+  emergencyContact: DS.attr(  'string'),
   emergencyContactPhone: DS.attr('string'),
   userType: DS.attr('string'),
   email: DS.attr('string'),
-  seasons: DS.hasMany('user-season'),
   systemLoadDate: DS.attr('date', {
     defaultValue() { return new Date(); }
   }),

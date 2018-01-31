@@ -86,7 +86,6 @@ export default Ember.Component.extend({
         }
 
         //create user
-        let userLink = this.get('store').createRecord('user-link');
         let user = this.get('store').createRecord('user', {
                 firstName: this.get('firstName'),
                 lastName: this.get('lastName'),
@@ -114,26 +113,20 @@ export default Ember.Component.extend({
               //update session
               session.fetch()
                 .then(() => {
-                    //set userLink
-                    userLink.set('id', session.get('uid'));
-                    userLink.set('provider', 'password');
-                    userLink.set('user', user);
-                    //save user & link
-                    userLink.save().then(() => {
-                      user.save().then(() => {
-                        //send verification email
-                        let fUser = this.get('firebaseApp').auth().currentUser;
-                        fUser.sendEmailVerification()
-                          .then(function() {
-                            //transition
-                            this.get('router').transitionTo('secure.dashboard');
-                          }.bind(this))
-                          .catch(function(error) {
-                            //log and continue - they can resend...
-                            Logger.error(error);
-                            this.get('router').transitionTo('secure.dashboard');
-                          });
-                      });
+                    //save user
+                    user.save().then(() => {
+                      //send verification email
+                      let fUser = this.get('firebaseApp').auth().currentUser;
+                      fUser.sendEmailVerification()
+                        .then(function() {
+                          //transition
+                          this.get('router').transitionTo('secure.dashboard');
+                        }.bind(this))
+                        .catch(function(error) {
+                          //log and continue - they can resend...
+                          Logger.error(error);
+                          this.get('router').transitionTo('secure.dashboard');
+                        });
                     });
                 })
                 .catch((error) => {
@@ -154,16 +147,10 @@ export default Ember.Component.extend({
               window.scrollTo(0,0);
           });
         } else { //already authenticated, just need to create user and add to session
-            //set userLink
-            userLink.set('id', session.get('uid'));
-            userLink.set('provider', session.get('provider'));
-            userLink.set('user', user);
-            //save user & link
-            userLink.save().then(() => {
-              user.save().then(() => {
-                //transition
-                this.get('router').transitionTo('secure.dashboard');
-              });
+            //save user
+            user.save().then(() => {
+              //transition
+              this.get('router').transitionTo('secure.dashboard');
             });
         }
 
