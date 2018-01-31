@@ -6,11 +6,19 @@ export default DS.Model.extend({
   lastName: DS.attr('string'),
   dob: DS.attr('date'),
   shirtSize: DS.attr('string'),
+  gender: DS.attr('string'),
+  isKeeper: DS.attr('boolean'),
+  isOffense: DS.attr('boolean'),
+  isDefense: DS.attr('boolean'),
   phone: DS.attr('string'),
-  emergencyContact: DS.attr('string'),
+  emergencyContact: DS.attr(  'string'),
   emergencyContactPhone: DS.attr('string'),
   userType: DS.attr('string'),
   email: DS.attr('string'),
+  systemLoadDate: DS.attr('date', {
+    defaultValue() { return new Date(); }
+  }),
+  systemUpdateDate: DS.attr('date'),
 
   isAllowedPlayer: Ember.computed('userType', function() {
     let userType = this.get('userType');
@@ -22,5 +30,8 @@ export default DS.Model.extend({
   }),
   isAllowedAdmin: Ember.computed('userType', function() {
     return this.get('userType') === 'admin';
+  }),
+  fullName: Ember.computed('firstName', 'lastName', function() {
+    return this.get('firstName') + ' ' + this.get('lastName');
   })
 });

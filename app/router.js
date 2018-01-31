@@ -44,6 +44,7 @@ Router.map(function() {
       this.route('season-management');
     });
   });
+  this.route('gencontract');
 });
 
 export default Router;

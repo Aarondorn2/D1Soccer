@@ -50,14 +50,17 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
-
-        //point to -stg project
+      //point to -dev project
       ENV.firebase = {
         apiKey: 'AIzaSyBqOgivaTAgl8NfjKFfujNlkUnpCuHd5bI',
         authDomain: 'd1soccer-dev.firebaseapp.com',
         databaseURL: 'https://d1soccer-dev.firebaseio.com',
         storageBucket: 'd1soccer-dev.appspot.com',
         messagingSenderId: '650769926530'
+      };
+      ENV.API = {
+        host: 'http://localhost3',
+        namespace: 'app_dev.php'
       };
   }
 
@@ -79,13 +82,29 @@ module.exports = function(environment) {
       apiKey: "AIzaSyC5XHtz5BDIsrSqH3SNqNMG4u6s_TbqLTA",
       authDomain: "d1soccer-stg.firebaseapp.com",
       databaseURL: "https://d1soccer-stg.firebaseio.com",
+      projectId: "d1soccer-stg",
       storageBucket: "d1soccer-stg.appspot.com",
       messagingSenderId: "299942619453"
+    };
+    ENV.API = {
+      host: 'http://localhost3',
+      namespace: 'app.php'
     };
   }
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
+
+
+      //point to -prod project
+    ENV.firebase = {
+      apiKey: 'AIzaSyDoyGAvZXzKl8I1pjdG7XVx8JKqDShgZVw',
+      authDomain: 'd1chattsoccer.com',
+      databaseURL: 'https://d1soccer-prod.firebaseio.com',
+      projectId: "d1soccer-prod",
+      storageBucket: 'd1soccer-prod.appspot.com',
+      messagingSenderId: '124721056854'
+    };
   }
 
   return ENV;

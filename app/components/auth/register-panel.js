@@ -1,7 +1,7 @@
 import Ember from 'ember';
 const {Logger} = Ember;
 
-//TODO add fields for gender and preferred position. switch to model injection via route? Move validation to model?
+//TODO Switch to model injection via route? Move validation to model?
 export default Ember.Component.extend({
   firebaseApp: Ember.inject.service(),
   router: Ember.inject.service(),
@@ -14,6 +14,10 @@ export default Ember.Component.extend({
   dob: "",
   phone: "",
   shirtSize: "None",
+  gender: "Not Specified",
+  isKeeper: false,
+  isOffense: false,
+  isDefense: false,
   emergencyContact: "",
   emergencyContactPhone: "",
 
@@ -86,6 +90,10 @@ export default Ember.Component.extend({
                 firstName: this.get('firstName'),
                 lastName: this.get('lastName'),
                 dob: new Date(this.get('dob')),
+                gender: this.get('gender'),
+                isKeeper: this.get('isKeeper'),
+                isOffense: this.get('isOffense'),
+                isDefense: this.get('isDefense'),
                 shirtSize: this.get('shirtSize'),
                 phone: this.get('phone'),
                 emergencyContact: this.get('emergencyContact'),
@@ -101,7 +109,7 @@ export default Ember.Component.extend({
               this.get('email'),
               this.get('password')
           ).then(
-            ()=>{
+            () => {
               //update session
               session.fetch()
                 .then(() => {
@@ -139,6 +147,7 @@ export default Ember.Component.extend({
               window.scrollTo(0,0);
           });
         } else { //already authenticated, just need to create user and add to session
+            //save user
             user.save().then(() => {
               //transition
               this.get('router').transitionTo('secure.dashboard');
@@ -147,6 +156,7 @@ export default Ember.Component.extend({
 
       } // createUser()
   },
+
   init() {
     this._super(...arguments);
 

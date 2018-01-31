@@ -5,5 +5,9 @@ export default Ember.Component.extend({
 
   isDropdown: Ember.computed('type', function() {
     return this.get('type') === "select";
+  }),
+
+  isCheckbox: Ember.computed('type', function() {
+    return this.get('type') === "checkbox";
   })
 });

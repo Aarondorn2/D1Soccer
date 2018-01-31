@@ -6,6 +6,8 @@ export default DS.Model.extend({
   endDate: DS.attr('date'),
   registrationStartDate: DS.attr('date'),
   registrationEndDate: DS.attr('date'),
-  systemLoadDate: DS.attr('date'),
+  systemLoadDate: DS.attr('date', {
+    defaultValue() { return new Date(); }
+  }),
   systemUpdateDate: DS.attr('date')
 });

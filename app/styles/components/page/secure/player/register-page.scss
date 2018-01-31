@@ -1,0 +1,30 @@
+.panel-register-page {
+
+}
+
+.register-page-segment {
+  text-align: center;
+}
+
+.register-page-segment .panel-body{
+  min-height: 170px;
+}
+
+.waiver-modal-content {
+  max-width: 90%;
+  max-height: 250px;
+  overflow-y: auto;
+  border: 3px ridge;
+  margin: 30px auto;
+  text-align: left;
+  padding: 10px;
+}
+
+.waiver-modal-body {
+  text-align: center;
+}
+
+#liability-modal .modal-header {
+  color: #c8c8c8;
+  background-color: #272b30;
+}
