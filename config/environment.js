@@ -106,7 +106,7 @@ module.exports = function(environment) {
       messagingSenderId: '124721056854'
     };
     ENV.API = {
-      host: 'http://api.D1ChattSoccer.com',
+      host: 'https://api.D1ChattSoccer.com',
       namespace: 'app.php'
     };
   }
