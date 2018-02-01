@@ -67,24 +67,20 @@ export default Ember.Component.extend({
       //build waiver obeject and persist
       let userSeason = this.get('userSeason');
 
-      Ember.$.get("http://ipinfo.io", function(response) {
+      let waiver = this.get('store').createRecord('waiver', {
+              userSeasonId: userSeason.id,
+              contractId: this.get('contract.id'),
+              acceptedName: this.get('user.fullName'),
+              acceptedEmail: this.get('user.email'),
+              acceptedIPAddress: '1',
+              hasAccepted: true,
+              acceptedDate: new Date(),
+              systemLoadDate: new Date()
+            });
 
-          let waiver = this.get('store').createRecord('waiver', {
-                  userSeasonId: userSeason.id,
-                  contractId: this.get('contract.id'),
-                  acceptedName: this.get('user.fullName'),
-                  acceptedEmail: this.get('user.email'),
-                  acceptedIPAddress: response.ip,
-                  hasAccepted: true,
-                  acceptedDate: new Date(),
-                  systemLoadDate: new Date()
-                });
-
-          waiver.save().then(() => { //will update relationships on back end.
-              userSeason.reload(); //get updated relationship
-          });
-
-      }.bind(this), "jsonp");
+      waiver.save().then(() => { //will update relationships on back end.
+          userSeason.reload(); //get updated relationship
+      });
     }
   }
 
