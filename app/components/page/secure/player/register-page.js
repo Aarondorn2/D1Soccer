@@ -9,7 +9,6 @@ export default Ember.Component.extend({
   showLiabilityModal: false,
   contract: null,
 
-
   init() {
     this._super(...arguments);
     this.set('contract', this.get('contracts').get('firstObject'));
@@ -81,7 +80,7 @@ export default Ember.Component.extend({
                   systemLoadDate: new Date()
                 });
 
-          waiver.save().then((response) => { //will update relationships on back end.
+          waiver.save().then(() => { //will update relationships on back end.
               userSeason.reload(); //get updated relationship
           });
 

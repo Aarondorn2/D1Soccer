@@ -13,6 +13,7 @@
 @import 'components/menu/nav-scrollspy';
 @import 'components/menu/nav-sidebar';
 @import 'components/page/home-page';
+@import 'components/page/secure/player/join-team-page';
 @import 'components/page/secure/player/register-page';
 @import 'components/partial/google-embed';
 @import 'components/table/edit-table';
@@ -82,7 +83,7 @@ body {
 }
 
 .secure-content {
-  width: 100%; 
+  width: 100%;
 }
 
 .center-container {
