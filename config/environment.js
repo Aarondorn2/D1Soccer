@@ -107,7 +107,7 @@ module.exports = function(environment) {
     };
     ENV.API = {
       host: 'https://api.D1ChattSoccer.com',
-      namespace: 'app.php'
+      namespace: ''
     };
   }
 
