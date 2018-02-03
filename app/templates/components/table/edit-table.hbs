@@ -3,7 +3,9 @@
   <div class="panel panel-default edit-table-panel">
     <div class="panel-heading">
       <h4 style="display:inline;">{{title}} <small> Click on a Row to Edit</small></h4>
-      <button class="btn btn-success btn-sm pull-right" {{action 'addItem'}}>Add a New Record</button>
+      {{#if showAddButton}}
+        <button class="btn btn-success btn-sm pull-right" {{action 'addItem'}}>Add a New Record</button>
+      {{/if}}
       <div class="clearfix" />
     </div>
     <div class="panel-body">

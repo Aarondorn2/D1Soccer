@@ -42,9 +42,11 @@ Router.map(function() {
       this.route('announcements');
       this.route('players');
       this.route('season-management');
+      this.route('season-roster');
     });
   });
   this.route('gencontract');
+
 });
 
 export default Router;
