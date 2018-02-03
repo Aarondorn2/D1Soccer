@@ -15,11 +15,24 @@
 }
 
 .section {
+  background-color: #eeedf1;
   text-align:center;
   padding: 25px;
 }
+.inner-section {
+  text-align: left;
+  min-height: 200px;
+  max-width: 800px;
+  margin-left: 6%;
+  margin-right: 6%;
+}
 .section-solid {
-  background-color: #eeedf1;
+}
+.section-transparent-85 {
+  opacity: 0.85;
+}
+.section-transparent-95 {
+  opacity: 0.95;
 }
 
 .ball-bg {
@@ -29,7 +42,7 @@
   -o-background-size: auto;
   background-size: auto;
   min-height: 500px;
-  margin-bottom: 40px;
+  // margin-bottom: 40px;
 }
 
 @media (max-width: 768px) {

@@ -5,14 +5,13 @@ export default Ember.Component.extend({
   session: Ember.inject.service(),
   tagName: 'li',
 
-    actions: {
-
-      showLoginModal: function() {
-        Ember.$('#login-modal').modal('show');
-      },
-      logout: function() {
-        this.get("session").close();
-        this.get('router').transitionTo('application');
-      }
+  actions: {
+    showLoginModal: function() {
+      Ember.$('#login-modal').modal('show');
+    },
+    logout: function() {
+      this.get("session").close();
+      this.get('router').transitionTo('application');
     }
+  }
 });

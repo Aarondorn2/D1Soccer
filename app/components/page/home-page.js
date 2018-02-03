@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  session: Ember.inject.service(),
+  router: Ember.inject.service(),
   init() {
     this._super(...arguments);
 
@@ -24,4 +26,13 @@ export default Ember.Component.extend({
 
     });
   },
+  actions: {
+      showLoginModal: function() {
+        if(this.get('session.isAuthenticated')) {
+          this.get('router').transitionTo('secure.dashboard');
+        } else {
+          Ember.$('#login-modal').modal('show');
+        }
+      }
+  }
 });
