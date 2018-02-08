@@ -38,7 +38,7 @@
               {{#if item.isEditing}}
                 <tr id={{item.id}}>
                   {{#each modelStructure as |structure|}}
-                    <td width={{structure.columnWidth}} data-sort={{get item structure.propertyName}}>
+                    <td width={{structure.columnWidth}} data-order={{get item structure.propertyName}} data-search={{get item structure.propertyName}}>
 
                         {{!-- using bootstrap-input component to help dynamically build/style everything (including masking) --}}
                         {{#if (eq structure.propertyType "select")}}
@@ -69,7 +69,7 @@
               {{else}} {{!-- not editing --}}
                 <tr id={{item.id}} {{action "editItem" item}}>
                   {{#each modelStructure as |structure|}}
-                    <td width={{structure.columnWidth}} data-sort={{get item structure.propertyName}}>
+                    <td width={{structure.columnWidth}} data-order={{get item structure.propertyName}} data-search={{get item structure.propertyName}}>
                       {{!-- using custom format helper to format the value given a value, type, and format
                       pulling the value dynamically from each item using the defined property name --}}
                       <span data-toggle="tooltip" title={{edit-table-format (get item structure.propertyName) structure.propertyType structure.propertyFormat structure.parseAsDate}}>

@@ -53,6 +53,7 @@ export default Route.extend({
       "propertyValue": new Date()
     },
   ],
+  sortOrder: [[ 0, "asc" ],[1, "asc"]],
   model() {
     return Ember.RSVP.hash({
       userSeasons: this.store.query('userSeason', { filter: 'admin' }),
@@ -75,5 +76,6 @@ export default Route.extend({
     this._super(controller, model);
     controller.set('modelStructure', this.get('modelStructure'));
     controller.set('modelDefaults', this.get('modelDefaults'));
+    controller.set('sortOrder', this.get('sortOrder'));
   }
 });
