@@ -6,20 +6,23 @@
   <span class="required-asterisk" />
 {{/if}}
 
-
-{{!-- inputs --}}
-{{#if mask}}
-  {{#if maskedValue}}
-    {{input-mask mask=mask value=value class="form-control" id=tag title=title}}
-  {{else}}
-    {{input-mask mask=mask unmaskedValue=value class="form-control" id=tag title=title}}
-  {{/if}}
-{{else if isDropdown}}
-  <select class="form-control" id={{tag}} title={{title}} onchange={{action (mut value) value="target.value"}}>
-    {{yield}}
-  </select>
-{{else if isCheckbox}}
-  {{input type=type checked=value class="form-control" id=tag  title=title}}
+{{#if disabled}}
+  {{input type=type value=value class="form-control" id=tag  title=title disabled=true}}
 {{else}}
-  {{input type=type value=value class="form-control" id=tag  title=title}}
+  {{!-- inputs --}}
+  {{#if mask}}
+    {{#if maskedValue}}
+      {{input-mask mask=mask value=value class="form-control" id=tag title=title}}
+    {{else}}
+      {{input-mask mask=mask unmaskedValue=value class="form-control" id=tag title=title}}
+    {{/if}}
+  {{else if isDropdown}}
+    <select class="form-control" id={{tag}} title={{title}} onchange={{action (mut value) value="target.value"}}>
+      {{yield}}
+    </select>
+  {{else if isCheckbox}}
+    {{input type=type checked=value class="form-control" id=tag  title=title}}
+  {{else}}
+    {{input type=type value=value class="form-control" id=tag  title=title}}
+  {{/if}}
 {{/if}}

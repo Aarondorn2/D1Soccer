@@ -1,4 +1,6 @@
 import DS from 'ember-data';
+import Ember from 'ember';
+import moment from 'moment';
 
 export default DS.Model.extend({
   userId: DS.attr('number'),
@@ -14,5 +16,20 @@ export default DS.Model.extend({
   systemLoadDate: DS.attr('date', {
     defaultValue() { return new Date(); }
   }),
-  systemUpdateDate: DS.attr('date')
+  systemUpdateDate: DS.attr('date'),
+
+  //date transformers
+  systemLoadDateFormatted: Ember.computed('systemLoadDate', {
+    get() {
+      return moment(this.get('systemLoadDate')).format('L');
+    },
+    set(key, val) {
+      let value = val;
+      if (val) {
+        value = new Date(val);
+      }
+      this.set('systemLoadDate', value);
+      return val;
+    }
+  })
 });

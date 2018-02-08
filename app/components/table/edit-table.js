@@ -41,12 +41,18 @@ export default Ember.Component.extend({
       //need to clean up input before saving
       let modelStructure = this.get('modelStructure');
       let modelObject;
+      let property;
 
       for (let i = 0; i < modelStructure.length; i++ ) {
         modelObject = modelStructure[i];
 
+        property = item.get(modelObject.propertyName);
+
         if(modelObject.propertyType && modelObject.propertyType === "date") {
-          item.set(modelObject.propertyName, new Date(item.get(modelObject.propertyName)));
+          item.set(modelObject.propertyName, new Date(property));
+        } else if (property == 'false' || property == 'true') { //handle fake booleans
+          property = property != 'false';
+          item.set(modelObject.propertyName, property); // why is this needed?
         }
       }
 
@@ -55,7 +61,6 @@ export default Ember.Component.extend({
 
       for (let i = 0; i < modelDefaults.length; i++ ) {
         modelObject = modelDefaults[i];
-
         item.set(modelObject.propertyName, modelObject.propertyValue);
       }
 
@@ -138,5 +143,14 @@ export default Ember.Component.extend({
       this.set('dataTableAddID', "");
       dataTable.draw(false);
     }
-  }
+  },
+  willDestroyElement() {
+    this._super(...arguments);
+    this.get('model').forEach((item) => {
+      if(item.isEditing) {
+          item.rollbackAttributes();
+          this.send('_removeEditing', item);
+      }
+    });
+  },
 });

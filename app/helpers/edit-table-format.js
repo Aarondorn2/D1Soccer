@@ -2,7 +2,7 @@ import { helper } from '@ember/component/helper';
 import Moment from 'moment';
 import Numeral from 'numeral';
 
-export function editTableFormat([value, valueType, valueFormat]) {
+export function editTableFormat([value, valueType, valueFormat, parseAsDate]) {
   let formattedValue = value;
   let format;
   let valueArray;
@@ -12,7 +12,11 @@ export function editTableFormat([value, valueType, valueFormat]) {
   if (valueFormat) {
     switch(valueType) {
       case "date":
-        formattedValue = Moment(value).format(valueFormat); //https://momentjs.com/
+        if(parseAsDate) {
+          formattedValue = Moment(new Date(value)).format(valueFormat); //https://momentjs.com/
+        } else {
+          formattedValue = Moment(value).format(valueFormat); //https://momentjs.com/
+        }
         break;
       case "number":
         formattedValue = Numeral(value).format(valueFormat); //http://numeraljs.com/

@@ -1,5 +1,6 @@
 import DS from 'ember-data';
 import Ember from 'ember';
+import moment from 'moment';
 
 export default DS.Model.extend({
   firstName: DS.attr('string'),
@@ -33,5 +34,20 @@ export default DS.Model.extend({
   }),
   fullName: Ember.computed('firstName', 'lastName', function() {
     return this.get('firstName') + ' ' + this.get('lastName');
-  })
+  }),
+
+  //date transformers
+  dobFormatted: Ember.computed('dob', {
+    get() {
+      return moment(this.get('dob')).format('L');
+    },
+    set(key, val) {
+      let value = val;
+      if (val) {
+        value = new Date(val);
+      }
+      this.set('dob', value);
+      return val;
+  }
+})
 });

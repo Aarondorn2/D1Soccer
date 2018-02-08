@@ -26,10 +26,11 @@ export default Route.extend({
       ]
     },
     {
-      "propertyName": "dob",
+      "propertyName": "dobFormatted",
       "displayName": "DOB",
       "propertyType": "date",
       "propertyFormat": "ll",
+      "parseAsDate": true, //moment doesn't like non-ISO strings... 
       "propertyMask": "99/99/9999"
     },
     {
