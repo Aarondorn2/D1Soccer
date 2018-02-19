@@ -119,7 +119,9 @@ export default Ember.Component.extend({
           "fnDrawCallback": () => {
               //yay tooltips
               Ember.$('[data-toggle="tooltip"]').tooltip();
-          }
+          },
+          "pageLength": 250,
+          "lengthMenu": [10, 50, 100, 250]
         }));
 
     }
