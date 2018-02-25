@@ -1,108 +1,58 @@
 {{#partial/content-container theme="dark"}}
-<div class="panel-group">
 
-  <div class="panel panel-default edit-table-panel">
-    <div class="panel-heading">
-      <h4 style="display:inline;">My Team<small> Spring 2018</small></h4>
-    </div>
-    <div class="panel-body">
-      <table id="team-table"
-            class="table table-striped table-hover"
-            cellspacing="0"
-            width="100%"
-      >
-        <thead>
-          <tr class="bg-dark">
-              <th>Player</th>
-              <th>Waiver?</th>
-              <th>Paid?</th>
-              <th>Shirt Size</th>
-              <th>Gender</th>
-              <th>Position(s)</th>
-          </tr>
+{{#each model.teams as |team|}}
+  <div class="panel-group">
 
-        </thead>
-        <tbody>
-          {{#if model.isUpdating}}
-            <tr>
-              <td colspan="6" class="center-container">
-                {{fa-icon "spinner" spin=true size=3}}
-              </td>
+    <div class="panel panel-default edit-table-panel">
+      <div class="panel-heading">
+        <h4 style="display:inline;">{{team.teamName}}<small> Spring 2018</small></h4>
+      </div>
+      <div class="panel-body">
+        <table id="team-table"
+              class="table table-striped table-hover"
+              cellspacing="0"
+              width="100%"
+        >
+          <thead>
+            <tr class="bg-dark">
+                <th>Player</th>
+                <th>Waiver?</th>
+                <th>Paid?</th>
+                <th>Shirt Size</th>
+                <th>Gender</th>
+                <th>Position(s)</th>
             </tr>
-          {{else}}
-            {{#each model as |item|}}
-              {{#if (not-eq item.teamId '999')}}
-                <tr>
-                  <td>{{item.playerName}}</td>
-                  <td class="{{if item.hasWaiver 'success' 'danger'}}">{{if item.hasWaiver "Yes" "No"}}</td>
-                  <td class="{{if item.hasPaid 'success' 'warning'}}">{{if item.hasPaid "Yes" "No"}}</td>
-                  <td>{{item.shirtSize}}</td>
-                  <td>{{item.gender}}</td>
-                  <td>{{item.positions}}</td>
-                </tr>
-              {{/if}}
-            {{/each}}
-          {{/if}}
-        </tbody>
-        <tfoot>
 
-        </tfoot>
-      </table>
+          </thead>
+          <tbody>
+            {{#if model.isUpdating}}
+              <tr>
+                <td colspan="6" class="center-container">
+                  {{fa-icon "spinner" spin=true size=3}}
+                </td>
+              </tr>
+            {{else}}
+              {{#each model.rosters as |roster|}}
+                {{#if (eq roster.teamId team.id)}}
+                  <tr>
+                    <td>{{roster.playerName}}</td>
+                    <td class="{{if roster.hasWaiver 'success' 'danger'}}">{{if roster.hasWaiver "Yes" "No"}}</td>
+                    <td class="{{if roster.hasPaid 'success' 'warning'}}">{{if roster.hasPaid "Yes" "No"}}</td>
+                    <td>{{roster.shirtSize}}</td>
+                    <td>{{roster.gender}}</td>
+                    <td>{{roster.positions}}</td>
+                  </tr>
+                {{/if}}
+              {{/each}}
+            {{/if}}
+          </tbody>
+          <tfoot>
+
+          </tfoot>
+        </table>
+      </div>
     </div>
   </div>
-</div>
+{{/each}}
 
-{{!-- Free agents --}}
-<div class="panel-group">
-
-  <div class="panel panel-default edit-table-panel">
-    <div class="panel-heading">
-      <h4 style="display:inline;">Free Agents<small> Spring 2018</small></h4>
-    </div>
-    <div class="panel-body">
-      <table id="team-table"
-            class="table table-striped table-hover"
-            cellspacing="0"
-            width="100%"
-      >
-        <thead>
-          <tr class="bg-dark">
-              <th>Player</th>
-              <th>Waiver?</th>
-              <th>Paid?</th>
-              <th>Shirt Size</th>
-              <th>Gender</th>
-              <th>Position(s)</th>
-          </tr>
-
-        </thead>
-        <tbody>
-          {{#if model.isUpdating}}
-            <tr>
-              <td colspan="6" class="center-container">
-                {{fa-icon "spinner" spin=true size=3}}
-              </td>
-            </tr>
-          {{else}}
-            {{#each model as |item|}}
-              {{#if (eq item.teamId '999')}}
-                <tr>
-                  <td>{{item.playerName}}</td>
-                  <td class="{{if item.hasWaiver 'success' 'danger'}}">{{if item.hasWaiver "Yes" "No"}}</td>
-                  <td class="{{if item.hasPaid 'success' 'warning'}}">{{if item.hasPaid "Yes" "No"}}</td>
-                  <td>{{item.shirtSize}}</td>
-                  <td>{{item.gender}}</td>
-                  <td>{{item.positions}}</td>
-                </tr>
-              {{/if}}
-            {{/each}}
-          {{/if}}
-        </tbody>
-        <tfoot>
-
-        </tfoot>
-      </table>
-    </div>
-  </div>
-</div>
 {{/partial/content-container}}
