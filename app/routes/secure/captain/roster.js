@@ -5,8 +5,7 @@ export default Route.extend({
     model() {
       return Ember.RSVP.hash({
         teams: this.store.findAll('team'),
-        rosters: this.store.findAll('captainRoster'),
-        user: this.store.peekRecord('user', this.get('session.currentUser').userId)
+        rosters: this.store.findAll('captainRoster')
       });
     },
     afterModel(model) {
@@ -20,6 +19,7 @@ export default Route.extend({
         });
       });
       model.teams = whitelistTeams.uniqBy('teamName');
+      model.rosters = model.rosters.sortBy('playerName');
     },
 
 });

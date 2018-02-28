@@ -1,5 +1,7 @@
 {{#partial/content-container theme="dark"}}
-
+<span class="badge badge-primary pull-right">{{model.rosters.length}}</span>
+<div class="clearfix" />
+<br />
 {{#each model.teams as |team|}}
   <div class="panel-group">
 
@@ -54,5 +56,9 @@
     </div>
   </div>
 {{/each}}
+
+<br />
+<span class="badge badge-primary pull-right">{{model.rosters.length}}</span>
+<div class="clearfix" />
 
 {{/partial/content-container}}
