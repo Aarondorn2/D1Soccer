@@ -1,7 +1,17 @@
 {{#partial/content-container}}
-  <div class="standings-container">
+  {{!-- <div class="standings-container">
       {{partial/google-embed
         url="https://docs.google.com/spreadsheets/d/e/2PACX-1vTq0lWya4SF-MX79aOCUJPen4DpPtG6H2A5iLR2hPJ_x-Li8XhvspmhtzCACA8LgKdo4QSX9DOd_PkN/pubhtml?gid=388645489&single=true&widget=false&headers=false&chrome=false&gridlines=false"
       }}
-  </div>
+  </div> --}}
+  <div class="row" style = "padding: 20px">
+     {{#each model.data as |image|}}
+        <div class="col-xs-12">
+          <div>
+            <img src="{{image.link}}" style="margin:auto; display:block; max-width:90vw" />
+          </div>
+        </div>
+        <br /><br />
+      {{/each}}
+   </div>
 {{/partial/content-container}}
