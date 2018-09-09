@@ -8,7 +8,6 @@ module.exports = function(environment) {
     rootURL: '/',
     locationType: 'auto',
 
-
     torii: {
       sessionServiceName: 'session'
     },
@@ -27,28 +26,16 @@ module.exports = function(environment) {
     },
 
     EmberENV: {
-      FEATURES: {
-        // Here you can enable experimental features on an ember canary build
-        // e.g. 'with-controller': true
-      },
+      FEATURES: {},
       EXTEND_PROTOTYPES: {
         // Prevent Ember Data from overriding Date.parse.
         Date: false
       }
     },
-
-    APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
-    }
+    APP: {}
   };
 
   if (environment === 'development') {
-    // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
       //point to -dev project
       ENV.firebase = {
@@ -61,6 +48,8 @@ module.exports = function(environment) {
       ENV.API = {
         host: 'http://localhost3',
         namespace: 'app_dev.php'
+          // host: 'http://localhost:58514',
+          // namespace: 'api'
       };
   }
 
@@ -93,10 +82,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    // here you can enable a production-specific feature
-
-
-      //point to -prod project
+    // point to -prod project
     ENV.firebase = {
       apiKey: 'AIzaSyDoyGAvZXzKl8I1pjdG7XVx8JKqDShgZVw',
       authDomain: 'd1chattsoccer.com',
